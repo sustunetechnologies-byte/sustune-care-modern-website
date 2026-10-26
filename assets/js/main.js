@@ -25,7 +25,8 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
   }
 
   /* ==========================================================================
-     2. Theme Management (Light Default per Ram Sir, Dark Available & Persisted)
+     2. Theme Management (Light mode is ALWAYS DEFAULT per Ram Sir)
+     Only remember dark if visitor explicitly toggled it.
      ========================================================================== */
   function initTheme() {
     const themeToggleBtn = document.getElementById("theme-toggle-btn");
@@ -35,14 +36,12 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
     let savedTheme = null;
     try {
       savedTheme = localStorage.getItem("sustune_theme");
-    } catch (e) {
-      // localStorage may be disabled
-    }
+    } catch (e) {}
 
-    // Default is 'light' so the full-color brand logo is showcased
+    // Light mode is ALWAYS default, ignoring system dark mode
     let initialTheme = "light";
-    if (savedTheme === "dark" || savedTheme === "light") {
-      initialTheme = savedTheme;
+    if (savedTheme === "dark") {
+      initialTheme = "dark";
     }
 
     applyTheme(initialTheme);
@@ -62,7 +61,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
       doc.setAttribute("data-theme", theme);
       if (themeToggleBtn) {
         themeToggleBtn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
-        const nextTitle = theme === "light" ? "Switch to dark theme" : "Switch to light theme";
+        const nextTitle = theme === "light" ? "Switch theme (currently light)" : "Switch theme (currently dark)";
         themeToggleBtn.setAttribute("aria-label", nextTitle);
         themeToggleBtn.setAttribute("title", nextTitle);
       }
@@ -70,7 +69,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
         themeIcon.className = theme === "light" ? "theme-icon icon-moon" : "theme-icon icon-sun";
       }
       if (themeLabel) {
-        themeLabel.textContent = theme === "light" ? "Dark Mode" : "Light Mode";
+        themeLabel.textContent = theme === "light" ? "Switch theme" : "Switch theme";
       }
     }
   }
@@ -165,7 +164,8 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
     let activeTrigger = null;
 
     tileTriggers.forEach((trigger) => {
-      trigger.addEventListener("click", () => {
+      trigger.addEventListener("click", (e) => {
+        e.preventDefault();
         const targetId = trigger.getAttribute("aria-controls") || trigger.dataset.target;
         const targetModal = document.getElementById(targetId);
         if (targetModal) {
@@ -231,8 +231,59 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
   }
 
   /* ==========================================================================
-     5. Accessible Video Modal Player
-     Accessible modal, focus trap, Escape to close, pause on close
+     5. Hero Video Autoplay & Toggle (No blur, reliable autoplay, play/pause btn)
+     ========================================================================== */
+  function initHeroVideo() {
+    const video = document.getElementById("home-hero-video");
+    const toggleBtn = document.getElementById("hero-video-toggle");
+    if (!video) return;
+
+    // Set muted and defaultMuted via JS
+    video.muted = true;
+    video.defaultMuted = true;
+
+    // Do NOT pause because of prefers-reduced-motion by default per Ram Sir
+    const startPlay = () => {
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(() => {
+          // Retry on first user touch/click/scroll
+          const retry = () => {
+            video.muted = true;
+            video.play().catch(() => {});
+            window.removeEventListener("click", retry);
+            window.removeEventListener("touchstart", retry);
+            window.removeEventListener("scroll", retry);
+          };
+          window.addEventListener("click", retry, { once: true, passive: true });
+          window.addEventListener("touchstart", retry, { once: true, passive: true });
+          window.addEventListener("scroll", retry, { once: true, passive: true });
+        });
+      }
+    };
+
+    startPlay();
+
+    // Corner toggle button
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
+        if (video.paused) {
+          video.play();
+          toggleBtn.setAttribute("aria-label", "Pause background video");
+          toggleBtn.setAttribute("title", "Pause background video");
+          toggleBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+        } else {
+          video.pause();
+          toggleBtn.setAttribute("aria-label", "Play background video");
+          toggleBtn.setAttribute("title", "Play background video");
+          toggleBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>';
+        }
+      });
+    }
+  }
+
+  /* ==========================================================================
+     6. Accessible Video Modal Player
      ========================================================================== */
   function initVideoModal() {
     const videoModal = document.getElementById("video-modal");
@@ -267,24 +318,18 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
       videoModal.setAttribute("aria-hidden", "false");
       body.classList.add("modal-locked");
 
-      // Auto play video when opened
       if (modalVideo) {
+        modalVideo.currentTime = 0;
         const playPromise = modalVideo.play();
         if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // Autoplay might be prevented without user gesture on some browsers
-          });
+          playPromise.catch(() => {});
         }
       }
 
-      // Trap focus: focus close button
-      if (closeBtn) {
-        closeBtn.focus();
-      }
+      if (closeBtn) closeBtn.focus();
     }
 
     function closeModal() {
-      // Pause video on close per requirement
       if (modalVideo) {
         modalVideo.pause();
       }
@@ -294,7 +339,6 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
       videoModal.setAttribute("hidden", "until-found");
       body.classList.remove("modal-locked");
 
-      // Return focus to the trigger element
       if (lastActiveTrigger) {
         lastActiveTrigger.focus();
         lastActiveTrigger = null;
@@ -315,7 +359,6 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
       backdrop.addEventListener("click", closeModal);
     }
 
-    // Keyboard handlers: Escape to close and Tab focus trap
     document.addEventListener("keydown", (e) => {
       if (!videoModal.classList.contains("is-open")) return;
 
@@ -339,7 +382,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
   }
 
   /* ==========================================================================
-     6. FAQ Accordion (Contact Page)
+     7. FAQ Accordion (Contact Page)
      ========================================================================== */
   function initFaq() {
     const faqTriggers = document.querySelectorAll(".faq-trigger");
@@ -371,6 +414,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
     initTheme();
     initMobileMenu();
     initServiceTileModals();
+    initHeroVideo();
     initVideoModal();
     initFaq();
   }

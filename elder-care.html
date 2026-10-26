@@ -61,10 +61,10 @@
       </nav>
 
       <div class="header-actions">
-        <!-- Theme Toggle -->
-        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch to dark theme" title="Switch to dark theme" aria-pressed="false">
+        <!-- Theme Toggle (Icon-only 44px) -->
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch theme" aria-pressed="false">
           <span id="theme-toggle-icon" class="theme-icon icon-moon" aria-hidden="true"></span>
-          <span id="theme-toggle-label" class="sr-only">Dark Mode</span>
+          <span id="theme-toggle-label" class="sr-only">Switch theme</span>
         </button>
 
         <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary header-enquire-btn btn-enquire" target="_blank" rel="noopener noreferrer">
@@ -147,79 +147,103 @@
       <img src="assets/logo/ribbon-divider.svg" alt="" width="600" height="20" loading="lazy">
     </div>
 
-    <!-- 4 Interactive Service Tiles -->
+    <!-- 4 Interactive Photo Service Tiles (>= 60% Photo area per Ram Sir) -->
     <section class="section-padding" aria-labelledby="services-title">
       <div class="container">
         <h2 id="services-title" class="sr-only">Sparsh Services</h2>
         <div class="service-tiles-grid">
-          <!-- Tile 1 -->
-          <button type="button" class="service-tile js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-emergency">
-            <div>
-              <div class="service-tile-icon" aria-hidden="true">🚑</div>
+          <!-- Photo Tile 1 -->
+          <div class="service-photo-tile">
+            <div class="service-tile-media">
+              <img src="assets/photos/elder-tile-1.jpg" alt="Dedicated hospital coordination and bedside support" width="800" height="600" class="service-tile-img" loading="lazy">
+              <div class="service-tile-gradient" aria-hidden="true"></div>
+            </div>
+            <div class="service-tile-overlay-content">
               <h3 class="service-tile-title">Emergency Medical Support</h3>
-              <p class="service-tile-desc">Immediate hospital coordination and crisis liaison.</p>
+              <p class="service-tile-desc">Immediate hospital coordination and rapid crisis liaison.</p>
+              <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-emergency" aria-label="Details for Emergency Medical Support">
+                <span>Details</span>
+                <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
             </div>
-            <span class="service-tile-cta">Details <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </div>
 
-          <!-- Tile 2 -->
-          <button type="button" class="service-tile js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-doctor">
-            <div>
-              <div class="service-tile-icon" aria-hidden="true">🩺</div>
+          <!-- Photo Tile 2 -->
+          <div class="service-photo-tile">
+            <div class="service-tile-media">
+              <img src="assets/photos/elder-tile-2.jpg" alt="Compassionate escort to diagnostic clinic" width="800" height="600" class="service-tile-img" loading="lazy">
+              <div class="service-tile-gradient" aria-hidden="true"></div>
+            </div>
+            <div class="service-tile-overlay-content">
               <h3 class="service-tile-title">Doctor Visit Accompaniment</h3>
-              <p class="service-tile-desc">Bedside and clinic accompaniment for appointments.</p>
+              <p class="service-tile-desc">Bedside and clinic accompaniment for medical appointments.</p>
+              <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-doctor" aria-label="Details for Doctor Visit Accompaniment">
+                <span>Details</span>
+                <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
             </div>
-            <span class="service-tile-cta">Details <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </div>
 
-          <!-- Tile 3 -->
-          <button type="button" class="service-tile js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-errands">
-            <div>
-              <div class="service-tile-icon" aria-hidden="true">💊</div>
-              <h3 class="service-tile-title">Prescription Grocery Errands</h3>
+          <!-- Photo Tile 3 -->
+          <div class="service-photo-tile">
+            <div class="service-tile-media">
+              <img src="assets/photos/elder-tile-3.jpg" alt="Pharmacy and fresh grocery delivery" width="800" height="600" class="service-tile-img" loading="lazy">
+              <div class="service-tile-gradient" aria-hidden="true"></div>
+            </div>
+            <div class="service-tile-overlay-content">
+              <h3 class="service-tile-title">Prescription &amp; Grocery Errands</h3>
               <p class="service-tile-desc">Doorstep delivery of vital medicines and groceries.</p>
+              <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-errands" aria-label="Details for Prescription and Grocery Errands">
+                <span>Details</span>
+                <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
             </div>
-            <span class="service-tile-cta">Details <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </div>
 
-          <!-- Tile 4 -->
-          <button type="button" class="service-tile js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-wellness">
-            <div>
-              <div class="service-tile-icon" aria-hidden="true">🤝</div>
-              <h3 class="service-tile-title">Companionship Wellness Visits</h3>
-              <p class="service-tile-desc">Regular visits ensuring vitality, wellbeing, and dignity.</p>
+          <!-- Photo Tile 4 -->
+          <div class="service-photo-tile">
+            <div class="service-tile-media">
+              <img src="assets/photos/elder-tile-4.jpg" alt="Attendant sharing a warm smile with elderly resident" width="800" height="600" class="service-tile-img" loading="lazy">
+              <div class="service-tile-gradient" aria-hidden="true"></div>
             </div>
-            <span class="service-tile-cta">Details <span aria-hidden="true">&rarr;</span></span>
-          </button>
+            <div class="service-tile-overlay-content">
+              <h3 class="service-tile-title">Companionship &amp; Wellness Visits</h3>
+              <p class="service-tile-desc">Regular visits ensuring vitality, wellbeing, and dignity.</p>
+              <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-wellness" aria-label="Details for Companionship and Wellness Visits">
+                <span>Details</span>
+                <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <!-- Video Card -->
-        <div class="single-video-section">
-          <div class="single-video-grid">
-            <div class="video-container">
-              <video class="video-element" controls preload="metadata" poster="assets/video/elder-care-poster.jpg" playsinline>
-                <source src="assets/video/elder-care.mp4" type="video/mp4">
-                <track kind="captions" src="assets/video/captions-placeholder.vtt" srclang="en" label="English" default>
-              </video>
-            </div>
-            <div class="video-meta-body">
-              <span class="badge-emerald video-badge">Video Spotlight</span>
-              <h3>Sparsh Care in Action</h3>
-              <p>Dedicated on-ground care for your parents.</p>
-              
-              <details class="video-transcript">
-                <summary>Read transcript</summary>
-                <p>Transcript coming soon.</p>
-              </details>
-
-              <div class="video-actions">
-                <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
-                  Enquire Now
-                </a>
-                <a href="index.html" class="btn btn-secondary">
-                  Back to Home
-                </a>
+        <!-- Compact Video Card (No large empty space) -->
+        <div class="compact-video-card">
+          <div class="compact-video-thumb-wrap js-video-modal-trigger" data-video-src="assets/video/elder-care.mp4" data-video-title="Sparsh Elder Care in Action" data-video-poster="assets/video/elder-care-poster.jpg" role="button" tabindex="0" aria-label="Play Sparsh Elder Care video">
+            <img src="assets/video/elder-care-poster.jpg" alt="Sparsh Elder Care preview thumbnail" width="260" height="462" class="compact-video-thumb-img" loading="lazy">
+            <div class="compact-video-play-overlay" aria-hidden="true">
+              <div class="compact-video-play-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
               </div>
+            </div>
+          </div>
+          <div class="compact-video-meta">
+            <span class="hero-eyebrow badge-emerald">VIDEO SPOTLIGHT</span>
+            <h3 class="compact-video-title">Sparsh Care in Action</h3>
+            <p class="compact-video-desc">Dedicated on-ground elder care support for parents in India.</p>
+            
+            <details class="video-transcript">
+              <summary>Read transcript</summary>
+              <p>Transcript coming soon.</p>
+            </details>
+
+            <div class="video-actions">
+              <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
+                Enquire Now
+              </a>
+              <a href="index.html" class="btn btn-secondary">
+                Back to Home
+              </a>
             </div>
           </div>
         </div>
@@ -244,7 +268,7 @@
     <div class="tile-modal-card">
       <button type="button" class="tile-modal-close" aria-label="Close details dialog">&times;</button>
       <h3 id="modal-sparsh-emergency-title" class="tile-modal-title">Emergency Medical Support</h3>
-      <p class="tile-modal-subtitle">24/7 rapid mobilization during critical health moments.</p>
+      <p class="tile-modal-subtitle">Dedicated emergency coordination during critical health moments.</p>
       <ul class="tile-modal-bullets">
         <li>Immediate ambulance coordination and hospital liaison.</li>
         <li>Real-time medical status updates sent directly to NRI family.</li>
@@ -280,7 +304,7 @@
     <div class="tile-modal-card">
       <button type="button" class="tile-modal-close" aria-label="Close details dialog">&times;</button>
       <h3 id="modal-sparsh-errands-title" class="tile-modal-title">Prescription &amp; Grocery Errands</h3>
-      <p class="tile-modal-subtitle">Punctual domestic logistics relieving your parents of daily friction.</p>
+      <p class="tile-modal-subtitle">Reliable domestic logistics relieving your parents of daily friction.</p>
       <ul class="tile-modal-bullets">
         <li>Verified authentic pharmacy fulfillment with dosage checks.</li>
         <li>Weekly pantry, fruit, and grocery restocking per parents' preferences.</li>

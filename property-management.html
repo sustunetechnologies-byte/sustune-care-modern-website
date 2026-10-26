@@ -61,10 +61,10 @@
       </nav>
 
       <div class="header-actions">
-        <!-- Theme Toggle -->
-        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch to dark theme" title="Switch to dark theme" aria-pressed="false">
+        <!-- Theme Toggle (Icon-only 44px) -->
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch theme" aria-pressed="false">
           <span id="theme-toggle-icon" class="theme-icon icon-moon" aria-hidden="true"></span>
-          <span id="theme-toggle-label" class="sr-only">Dark Mode</span>
+          <span id="theme-toggle-label" class="sr-only">Switch theme</span>
         </button>
 
         <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary header-enquire-btn btn-enquire" target="_blank" rel="noopener noreferrer">
@@ -147,79 +147,103 @@
       <img src="assets/logo/ribbon-divider.svg" alt="" width="600" height="20" loading="lazy">
     </div>
 
-    <!-- 4 Interactive Service Tiles -->
+    <!-- 4 Interactive Photo Service Tiles (>= 60% Photo area per Ram Sir) -->
     <section class="section-padding" aria-labelledby="aegis-services-title">
       <div class="container">
         <h2 id="aegis-services-title" class="sr-only">Aegis Services</h2>
         <div class="service-tiles-grid">
-          <!-- Tile 1 -->
-          <button type="button" class="service-tile js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-aegis-scouting">
-            <div>
-              <div class="service-tile-icon" aria-hidden="true">🔍</div>
-              <h3 class="service-tile-title">Tenant Scouting &amp; Verification</h3>
-              <p class="service-tile-desc">Police verification, employment checks, and formal lease agreements.</p>
+          <!-- Photo Tile 1 -->
+          <div class="service-photo-tile">
+            <div class="service-tile-media">
+              <img src="assets/photos/property-tile-1.jpg" alt="Thorough visual property assessment" width="800" height="600" class="service-tile-img" loading="lazy">
+              <div class="service-tile-gradient" aria-hidden="true"></div>
             </div>
-            <span class="service-tile-cta">Details <span aria-hidden="true">&rarr;</span></span>
-          </button>
-
-          <!-- Tile 2 -->
-          <button type="button" class="service-tile js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-aegis-rent">
-            <div>
-              <div class="service-tile-icon" aria-hidden="true">💳</div>
-              <h3 class="service-tile-title">Rent Collection &amp; Remittance</h3>
-              <p class="service-tile-desc">Punctual monthly rental collection and prompt direct remittance.</p>
-            </div>
-            <span class="service-tile-cta">Details <span aria-hidden="true">&rarr;</span></span>
-          </button>
-
-          <!-- Tile 3 -->
-          <button type="button" class="service-tile js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-aegis-inspections">
-            <div>
-              <div class="service-tile-icon" aria-hidden="true">📋</div>
+            <div class="service-tile-overlay-content">
               <h3 class="service-tile-title">Periodic Physical Inspections</h3>
-              <p class="service-tile-desc">Quarterly property audits with photographic condition reports.</p>
+              <p class="service-tile-desc">Scheduled property audits with photographic condition reports.</p>
+              <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-aegis-inspections" aria-label="Details for Periodic Physical Inspections">
+                <span>Details</span>
+                <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
             </div>
-            <span class="service-tile-cta">Details <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </div>
 
-          <!-- Tile 4 -->
-          <button type="button" class="service-tile js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-aegis-repairs">
-            <div>
-              <div class="service-tile-icon" aria-hidden="true">🛠️</div>
+          <!-- Photo Tile 2 -->
+          <div class="service-photo-tile">
+            <div class="service-tile-media">
+              <img src="assets/photos/property-tile-2.jpg" alt="Formal verified lease and tenant screening" width="800" height="600" class="service-tile-img" loading="lazy">
+              <div class="service-tile-gradient" aria-hidden="true"></div>
+            </div>
+            <div class="service-tile-overlay-content">
+              <h3 class="service-tile-title">Tenant Scouting &amp; Verification</h3>
+              <p class="service-tile-desc">Verified background checks and formal lease agreements.</p>
+              <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-aegis-scouting" aria-label="Details for Tenant Scouting and Verification">
+                <span>Details</span>
+                <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Photo Tile 3 -->
+          <div class="service-photo-tile">
+            <div class="service-tile-media">
+              <img src="assets/photos/property-tile-3.jpg" alt="Seamless international rental remittance" width="800" height="600" class="service-tile-img" loading="lazy">
+              <div class="service-tile-gradient" aria-hidden="true"></div>
+            </div>
+            <div class="service-tile-overlay-content">
+              <h3 class="service-tile-title">Rent Collection &amp; Remittance</h3>
+              <p class="service-tile-desc">Timely rental collection and direct overseas remittance.</p>
+              <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-aegis-rent" aria-label="Details for Rent Collection and Remittance">
+                <span>Details</span>
+                <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Photo Tile 4 -->
+          <div class="service-photo-tile">
+            <div class="service-tile-media">
+              <img src="assets/photos/property-tile-4.jpg" alt="Supervised repair and electrical maintenance" width="800" height="600" class="service-tile-img" loading="lazy">
+              <div class="service-tile-gradient" aria-hidden="true"></div>
+            </div>
+            <div class="service-tile-overlay-content">
               <h3 class="service-tile-title">Repairs &amp; Maintenance Oversight</h3>
               <p class="service-tile-desc">Vetted trade professionals resolving plumbing and electrical issues.</p>
+              <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-aegis-repairs" aria-label="Details for Repairs and Maintenance Oversight">
+                <span>Details</span>
+                <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
             </div>
-            <span class="service-tile-cta">Details <span aria-hidden="true">&rarr;</span></span>
-          </button>
+          </div>
         </div>
 
-        <!-- Video Card -->
-        <div class="single-video-section">
-          <div class="single-video-grid">
-            <div class="video-container">
-              <video class="video-element" controls preload="metadata" poster="assets/video/property-poster.jpg" playsinline>
-                <source src="assets/video/property.mp4" type="video/mp4">
-                <track kind="captions" src="assets/video/captions-placeholder.vtt" srclang="en" label="English" default>
-              </video>
-            </div>
-            <div class="video-meta-body">
-              <span class="badge-gold video-badge">Video Spotlight</span>
-              <h3>Aegis Stewardship in Action</h3>
-              <p>Active safeguarding for your property in India.</p>
-              
-              <details class="video-transcript">
-                <summary>Read transcript</summary>
-                <p>Transcript coming soon.</p>
-              </details>
-
-              <div class="video-actions">
-                <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
-                  Enquire Now
-                </a>
-                <a href="index.html" class="btn btn-secondary">
-                  Back to Home
-                </a>
+        <!-- Compact Video Card (No large empty space) -->
+        <div class="compact-video-card">
+          <div class="compact-video-thumb-wrap js-video-modal-trigger" data-video-src="assets/video/property.mp4" data-video-title="Aegis Stewardship in Action" data-video-poster="assets/video/property-poster.jpg" role="button" tabindex="0" aria-label="Play Aegis Stewardship video">
+            <img src="assets/video/property-poster.jpg" alt="Aegis Stewardship preview thumbnail" width="260" height="462" class="compact-video-thumb-img" loading="lazy">
+            <div class="compact-video-play-overlay" aria-hidden="true">
+              <div class="compact-video-play-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
               </div>
+            </div>
+          </div>
+          <div class="compact-video-meta">
+            <span class="hero-eyebrow badge-gold">VIDEO SPOTLIGHT</span>
+            <h3 class="compact-video-title">Aegis Stewardship in Action</h3>
+            <p class="compact-video-desc">Active safeguarding for your property in India.</p>
+            
+            <details class="video-transcript">
+              <summary>Read transcript</summary>
+              <p>Transcript coming soon.</p>
+            </details>
+
+            <div class="video-actions">
+              <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
+                Enquire Now
+              </a>
+              <a href="index.html" class="btn btn-secondary">
+                Back to Home
+              </a>
             </div>
           </div>
         </div>
@@ -282,7 +306,7 @@
       <h3 id="modal-aegis-inspections-title" class="tile-modal-title">Periodic Physical Inspections</h3>
       <p class="tile-modal-subtitle">Uncompromising on-site oversight protecting asset value.</p>
       <ul class="tile-modal-bullets">
-        <li>Comprehensive quarterly visual audits inside and outside.</li>
+        <li>Comprehensive periodic visual audits inside and outside.</li>
         <li>High-definition photographic logs and condition reports.</li>
         <li>Early detection of water seepage, structural wear, or misuse.</li>
       </ul>

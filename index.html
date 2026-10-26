@@ -85,10 +85,9 @@
       </nav>
 
       <div class="header-actions">
-        <!-- Theme Toggle -->
-        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch to dark theme" title="Switch to dark theme" aria-pressed="false">
+        <!-- Theme Toggle (Icon-only 44px per Ram Sir) -->
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch theme" aria-pressed="false">
           <span id="theme-toggle-icon" class="theme-icon icon-moon" aria-hidden="true"></span>
-          <span id="theme-toggle-label" class="sr-only">Dark Mode</span>
         </button>
 
         <!-- Desktop Enquire Button -->
@@ -130,28 +129,34 @@
   </aside>
 
   <main id="main-content">
-    <!-- 1. Hero Section (Landscape Background Video Clearly Visible) -->
+    <!-- 1. Split Hero Section (Desktop Split, Mobile Stacked) -->
     <section class="home-hero-section" aria-label="Welcome to Sustune Care">
-      <div class="home-hero-video-wrap" aria-hidden="true">
-        <video id="home-hero-video" class="home-hero-video" muted defaultMuted autoplay loop playsinline preload="metadata" poster="assets/video/home-hero-poster.jpg">
-          <source src="assets/video/home-hero.mp4" type="video/mp4">
-        </video>
-        <!-- Light transparent overlay per Ram Sir so video is clearly visible -->
-        <div class="home-hero-overlay"></div>
-      </div>
+      <div class="container">
+        <div class="home-hero-grid">
+          <!-- Left Column: Content -->
+          <div class="home-hero-card">
+            <span class="hero-eyebrow">Protected Care &bull; Sustained Dignity</span>
+            <h1 class="home-hero-title">Dignified Parent Care &amp; Trusted Property Stewardship</h1>
+            <p class="home-hero-subline">Professional on-ground care for your parents and real estate in India.</p>
+            <div class="home-hero-actions">
+              <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
+                Book a Consultation
+              </a>
+              <button type="button" class="btn btn-outline-marine btn-play-icon js-video-modal-trigger" data-video-src="assets/video/intro.mp4" data-video-title="Sustune Care - Watch Our Story" data-video-poster="assets/video/intro-poster.jpg" aria-haspopup="dialog" aria-controls="video-modal">
+                <svg class="play-svg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                <span>Watch Our Story</span>
+              </button>
+            </div>
+          </div>
 
-      <div class="container home-hero-content">
-        <div class="home-hero-card">
-          <span class="hero-eyebrow">Protected Care &bull; Sustained Dignity</span>
-          <h1 class="home-hero-title">Dignified Parent Care &amp; Trusted Property Stewardship</h1>
-          <p class="home-hero-subline">Professional on-ground care for your parents and real estate in India.</p>
-          <div class="home-hero-actions">
-            <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
-              Book a Consultation
-            </a>
-            <button type="button" class="btn btn-outline-white btn-play-icon js-video-modal-trigger" data-video-src="assets/video/intro.mp4" data-video-title="Sustune Care - Watch Our Story" data-video-poster="assets/video/intro-poster.jpg" aria-haspopup="dialog" aria-controls="video-modal">
-              <svg class="play-svg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-              <span>Watch Our Story</span>
+          <!-- Right Column: Large Portrait Video Frame (Clean, Gold Border, No Overlay) -->
+          <div class="home-hero-video-frame">
+            <video id="home-hero-video" class="home-hero-video" autoplay muted loop playsinline preload="auto" poster="assets/video/home-hero-poster.jpg">
+              <source src="assets/video/home-hero.mp4" type="video/mp4">
+            </video>
+            <!-- Visible Play/Pause toggle in corner -->
+            <button type="button" id="hero-video-toggle" class="hero-video-toggle" aria-label="Pause background video" title="Pause background video">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
             </button>
           </div>
         </div>
