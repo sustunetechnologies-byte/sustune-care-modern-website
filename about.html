@@ -36,15 +36,13 @@
   <!-- Header -->
   <header class="site-header" role="banner">
     <div class="container header-container">
+      <!-- Brand Logo (Live Text + Full-Colour Emblem per Ram Sir) -->
       <a href="index.html" class="header-logo" aria-label="Sustune Care Home">
-        <div class="logo-lockup--light">
-          <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="220" height="56" class="logo-svg">
-        </div>
-        <div class="logo-lockup--dark">
-          <img src="assets/logo/sustune_emblem_reversed_white.png" alt="" width="48" height="48" class="logo-emblem">
+        <div class="logo-lockup">
+          <img src="assets/logo/sustune_emblem_@2x.webp" alt="Sustune Care Emblem" width="64" height="64" class="logo-emblem">
           <div class="logo-text">
             <span class="logo-brand">SUSTUNE CARE</span>
-            <span class="logo-tagline">PROTECTED CARE &bull; SUSTAINED DIGNITY</span>
+            <span class="logo-tagline">Protected Care. Sustained Dignity.</span>
           </div>
         </div>
       </a>
@@ -62,9 +60,8 @@
 
       <div class="header-actions">
         <!-- Theme Toggle (Icon-only 44px) -->
-        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch theme" aria-pressed="false">
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch to dark theme" aria-pressed="false">
           <span id="theme-toggle-icon" class="theme-icon icon-moon" aria-hidden="true"></span>
-          <span id="theme-toggle-label" class="sr-only">Switch theme</span>
         </button>
 
         <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary header-enquire-btn btn-enquire" target="_blank" rel="noopener noreferrer">
@@ -85,7 +82,13 @@
   <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop" aria-hidden="true"></div>
   <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation Drawer">
     <div class="mobile-drawer-header">
-      <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="180" height="46" class="logo-svg">
+      <div class="logo-lockup">
+        <img src="assets/logo/sustune_emblem_@2x.webp" alt="Sustune Care Emblem" width="48" height="48" class="logo-emblem">
+        <div class="logo-text">
+          <span class="logo-brand">SUSTUNE CARE</span>
+          <span class="logo-tagline">Protected Care. Sustained Dignity.</span>
+        </div>
+      </div>
     </div>
     <nav class="mobile-drawer-nav" aria-label="Mobile Navigation">
       <a href="index.html" class="mobile-nav-link">Home</a>
@@ -149,22 +152,30 @@
 
         <div class="about-pillars-grid">
           <div class="about-pillar-card">
-            <div class="about-pillar-icon" aria-hidden="true">📋</div>
+            <div class="about-pillar-icon" aria-hidden="true">
+              <svg class="trust-svg-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><path d="M9 14l2 2 4-4"></path></svg>
+            </div>
             <h3 class="about-pillar-title">Transparent Reporting</h3>
             <p class="about-pillar-desc">Timestamped photo logs, audit checklists, and digital documentation delivered promptly.</p>
           </div>
           <div class="about-pillar-card">
-            <div class="about-pillar-icon" aria-hidden="true">🛡️</div>
+            <div class="about-pillar-icon" aria-hidden="true">
+              <svg class="trust-svg-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+            </div>
             <h3 class="about-pillar-title">Vetted People</h3>
             <p class="about-pillar-desc">Direct background checks, rigorous onboarding, and courteous professional conduct.</p>
           </div>
           <div class="about-pillar-card">
-            <div class="about-pillar-icon" aria-hidden="true">👤</div>
+            <div class="about-pillar-icon" aria-hidden="true">
+              <svg class="trust-svg-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
             <h3 class="about-pillar-title">One Point of Contact</h3>
             <p class="about-pillar-desc">A dedicated relationship manager managing all communications and schedules.</p>
           </div>
           <div class="about-pillar-card">
-            <div class="about-pillar-icon" aria-hidden="true">⭐</div>
+            <div class="about-pillar-icon" aria-hidden="true">
+              <svg class="trust-svg-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            </div>
             <h3 class="about-pillar-title">Executive Leadership</h3>
             <p class="about-pillar-desc">Executive team with 20+ years of professional experience guiding governance and ethics.</p>
           </div>
@@ -282,7 +293,13 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="180" height="46" class="footer-logo-inverted">
+          <div class="logo-lockup footer-logo-lockup">
+            <img src="assets/logo/sustune_emblem_@2x.webp" alt="Sustune Care Emblem" width="56" height="56" class="logo-emblem">
+            <div class="logo-text">
+              <span class="logo-brand">SUSTUNE CARE</span>
+              <span class="logo-tagline">Protected Care. Sustained Dignity.</span>
+            </div>
+          </div>
           <p>Protected Care. Sustained Dignity. Caring for what matters most in India.</p>
         </div>
         <div>

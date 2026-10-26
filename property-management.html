@@ -36,15 +36,13 @@
   <!-- Header -->
   <header class="site-header" role="banner">
     <div class="container header-container">
+      <!-- Brand Logo (Live Text + Full-Colour Emblem per Ram Sir) -->
       <a href="index.html" class="header-logo" aria-label="Sustune Care Home">
-        <div class="logo-lockup--light">
-          <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="220" height="56" class="logo-svg">
-        </div>
-        <div class="logo-lockup--dark">
-          <img src="assets/logo/sustune_emblem_reversed_white.png" alt="" width="48" height="48" class="logo-emblem">
+        <div class="logo-lockup">
+          <img src="assets/logo/sustune_emblem_@2x.webp" alt="Sustune Care Emblem" width="64" height="64" class="logo-emblem">
           <div class="logo-text">
             <span class="logo-brand">SUSTUNE CARE</span>
-            <span class="logo-tagline">PROTECTED CARE &bull; SUSTAINED DIGNITY</span>
+            <span class="logo-tagline">Protected Care. Sustained Dignity.</span>
           </div>
         </div>
       </a>
@@ -62,9 +60,8 @@
 
       <div class="header-actions">
         <!-- Theme Toggle (Icon-only 44px) -->
-        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch theme" aria-pressed="false">
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch to dark theme" aria-pressed="false">
           <span id="theme-toggle-icon" class="theme-icon icon-moon" aria-hidden="true"></span>
-          <span id="theme-toggle-label" class="sr-only">Switch theme</span>
         </button>
 
         <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary header-enquire-btn btn-enquire" target="_blank" rel="noopener noreferrer">
@@ -85,7 +82,13 @@
   <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop" aria-hidden="true"></div>
   <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation Drawer">
     <div class="mobile-drawer-header">
-      <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="180" height="46" class="logo-svg">
+      <div class="logo-lockup">
+        <img src="assets/logo/sustune_emblem_@2x.webp" alt="Sustune Care Emblem" width="48" height="48" class="logo-emblem">
+        <div class="logo-text">
+          <span class="logo-brand">SUSTUNE CARE</span>
+          <span class="logo-tagline">Protected Care. Sustained Dignity.</span>
+        </div>
+      </div>
     </div>
     <nav class="mobile-drawer-nav" aria-label="Mobile Navigation">
       <a href="index.html" class="mobile-nav-link">Home</a>
@@ -150,7 +153,11 @@
     <!-- 4 Interactive Photo Service Tiles (>= 60% Photo area per Ram Sir) -->
     <section class="section-padding" aria-labelledby="aegis-services-title">
       <div class="container">
-        <h2 id="aegis-services-title" class="sr-only">Aegis Services</h2>
+        <div class="section-header">
+          <span class="hero-eyebrow">AEGIS PROPERTY STEWARDSHIP</span>
+          <h2 id="aegis-services-title" class="section-title">Aegis Services</h2>
+          <p class="section-subline">Active, dependable property oversight and management for overseas owners.</p>
+        </div>
         <div class="service-tiles-grid">
           <!-- Photo Tile 1 -->
           <div class="service-photo-tile">
@@ -176,7 +183,7 @@
             </div>
             <div class="service-tile-overlay-content">
               <h3 class="service-tile-title">Tenant Scouting &amp; Verification</h3>
-              <p class="service-tile-desc">Verified background checks and formal lease agreements.</p>
+              <p class="service-tile-desc">Tenant screening, background vetting, and formal lease agreements.</p>
               <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-aegis-scouting" aria-label="Details for Tenant Scouting and Verification">
                 <span>Details</span>
                 <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -270,9 +277,9 @@
       <h3 id="modal-aegis-scouting-title" class="tile-modal-title">Tenant Scouting &amp; Verification</h3>
       <p class="tile-modal-subtitle">Protecting your real estate with verified, responsible occupants.</p>
       <ul class="tile-modal-bullets">
-        <li>Thorough background verification and identity screening.</li>
-        <li>Legally compliant rental agreements and security deposit handling.</li>
-        <li>Smooth move-in inventory documentation and keys handover.</li>
+        <li>Screening prospective tenants and identity verification.</li>
+        <li>Drafting and executing formal lease agreements.</li>
+        <li>Documenting move-in condition and coordinating key handovers.</li>
       </ul>
       <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
         Book a Consultation
@@ -286,11 +293,11 @@
     <div class="tile-modal-card">
       <button type="button" class="tile-modal-close" aria-label="Close details dialog">&times;</button>
       <h3 id="modal-aegis-rent-title" class="tile-modal-title">Rent Collection &amp; Remittance</h3>
-      <p class="tile-modal-subtitle">Predictable, timely cash flows without international friction.</p>
+      <p class="tile-modal-subtitle">Convenient rental coordination without international friction.</p>
       <ul class="tile-modal-bullets">
-        <li>Automated monthly rental invoicing and follow-up.</li>
-        <li>Prompt international or domestic bank account remittance.</li>
-        <li>Transparent digital statements with all deductions accounted for.</li>
+        <li>Coordinating monthly rent collection from tenants.</li>
+        <li>Remittance directly to your nominated bank account.</li>
+        <li>Providing clear account statements for each payment cycle.</li>
       </ul>
       <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
         Book a Consultation
@@ -304,11 +311,11 @@
     <div class="tile-modal-card">
       <button type="button" class="tile-modal-close" aria-label="Close details dialog">&times;</button>
       <h3 id="modal-aegis-inspections-title" class="tile-modal-title">Periodic Physical Inspections</h3>
-      <p class="tile-modal-subtitle">Uncompromising on-site oversight protecting asset value.</p>
+      <p class="tile-modal-subtitle">Regular on-ground reviews safeguarding your property.</p>
       <ul class="tile-modal-bullets">
-        <li>Comprehensive periodic visual audits inside and outside.</li>
-        <li>High-definition photographic logs and condition reports.</li>
-        <li>Early detection of water seepage, structural wear, or misuse.</li>
+        <li>Periodic visual inspections of internal and external areas.</li>
+        <li>Photographic updates documenting property condition.</li>
+        <li>Early observation of upkeep and maintenance needs.</li>
       </ul>
       <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
         Book a Consultation
@@ -322,11 +329,11 @@
     <div class="tile-modal-card">
       <button type="button" class="tile-modal-close" aria-label="Close details dialog">&times;</button>
       <h3 id="modal-aegis-repairs-title" class="tile-modal-title">Repairs &amp; Maintenance Oversight</h3>
-      <p class="tile-modal-subtitle">Reliable upkeep managed by licensed technicians and supervisors.</p>
+      <p class="tile-modal-subtitle">Reliable upkeep managed by local service personnel.</p>
       <ul class="tile-modal-bullets">
-        <li>Competitive estimates from pre-screened local contractors.</li>
-        <li>Direct supervisor oversight during maintenance work.</li>
-        <li>Post-completion photo verification before contractor payout.</li>
+        <li>Obtaining quotes from vetted local repair specialists.</li>
+        <li>Direct supervision during repairs and routine maintenance.</li>
+        <li>Reviewing photos of completed work before project sign-off.</li>
       </ul>
       <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
         Book a Consultation
@@ -339,7 +346,13 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="180" height="46" class="footer-logo-inverted">
+          <div class="logo-lockup footer-logo-lockup">
+            <img src="assets/logo/sustune_emblem_@2x.webp" alt="Sustune Care Emblem" width="56" height="56" class="logo-emblem">
+            <div class="logo-text">
+              <span class="logo-brand">SUSTUNE CARE</span>
+              <span class="logo-tagline">Protected Care. Sustained Dignity.</span>
+            </div>
+          </div>
           <p>Protected Care. Sustained Dignity. Caring for what matters most in India.</p>
         </div>
         <div>

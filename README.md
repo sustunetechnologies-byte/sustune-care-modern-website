@@ -9,15 +9,41 @@
 
 ## 1. Overview & Architecture
 
-Per senior management (Ram Sir's) feedback, Website 2 has been restructured from a long single-page layout into a **fast, visual, picture-led multi-page experience**:
+Per senior management (Ram Sir's) feedback, Website 2 has been rebuilt as a **fast, visual, picture-led multi-page experience**:
 1. **Less Scrolling, More Clicking:** Minimal visible text (under 120 words on service pages), high visual engagement, interactive service tiles with modal disclosures, and dedicated pages.
 2. **Dedicated Pages:** Separate pages for Sparsh Elder Care (hospital aesthetic) and Aegis Property Management (luxury real estate aesthetic), each featuring large visual hero imagery, 4 interactive service tiles, and video modal triggers.
-3. **Approved Brand Look & Ribbon Artwork:** Light theme default showcasing the official gold & blue logo (56px desktop / 48px mobile), dark mode toggle, and custom SVG flowing brand ribbon artwork (`brand-ribbon-wave.svg`, `ribbon-divider.svg`) in approved hexes `#0D3B66`, `#0073B7`, `#C99738`.
-4. **Mobile Sticky Bottom Bar:** Single sticky bottom bar with "Call us" and "WhatsApp" buttons on mobile viewports (< 768px), with the floating WhatsApp button hidden on mobile and active on desktop only.
-5. **Accessible Video Modal Player:** The home hero "Watch Our Story" button and service video buttons open `intro.mp4`, `elder-care.mp4`, and `property.mp4` in an accessible dialog with focus trap, Escape key closing, and automatic pausing on close.
-6. **Single Authoritative Enquiry Endpoint:** Every Enquire button routes through `GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8"` (`target="_blank"`, `rel="noopener noreferrer"`).
-7. **Self-Contained Static Site:** 100% Vanilla HTML5, CSS3, and JavaScript. Zero external frameworks, zero build steps, relative paths only.
-8. **Strict Security & WCAG 2.1 AA:** Full compliance with Content Security Policy (CSP), zero inline styles or scripts, accessible modal focus traps, and keyboard navigation.
+3. **Live HTML Logo Lockup & Full-Colour Emblem:**
+   - Real full-colour emblem image (`assets/logo/sustune_emblem_@2x.webp`) rendered at 64px high on desktop, 48px on mobile, and 56px in the footer.
+   - Live HTML brand text: `"SUSTUNE CARE"` (Plus Jakarta Sans 800, `#0D3B66` in light mode, `#FFFFFF` in dark mode) with the tagline `"Protected Care. Sustained Dignity."` in gold `#C99738` (min 11.5px).
+   - In dark mode and footer, the full-colour emblem is placed on a rounded white/mist (`#F1F5F9`) badge with a thin gold border (`1.5px solid #C99738`), preserving authentic emblem colours in both themes with zero CSS filters or reversed white versions.
+4. **Icon-Only 44px Theme Toggle:**
+   - 44px icon-only button with SVG sun and moon icons, `aria-label="Switch theme"`, and descriptive tooltip. Light mode remains default regardless of system settings.
+5. **Fresh 4K Video Stills (People-First & Sharp):**
+   - Extracted directly from native 4K master footage:
+     - `elder-tile-1.jpg`: Urgent care coordination call, caregiver face clearly visible.
+     - `elder-tile-3.jpg`: Caregiver handing Sustune Care delivery to smiling seniors.
+     - `about.jpg`: Young NRI client family on call, completely distinct from the Elder Care hero.
+     - `property-tile-1.jpg`: Property manager walking up exterior steps with lanyard, distinct from the Property hero.
+   - Regenerated `assets/photos/contact-sheet.jpg` titled *"Sustune Care stills from company videos (pending marketing-approved photos)"*. All "approved" wording has been purged.
+6. **Spacing & Layout:**
+   - 28px margin below every section heading and its subtitle before cards/tiles (`Our Core Services`, `Sparsh Services`, `Aegis Services`, `Built Upon Rigorous Standards`, `Founding Team`, `Active Operating Hubs`, `FAQ`).
+   - 80px padding between sections on desktop, 56px on mobile.
+   - Grey strip under hero ribbon wave on Home eliminated; hero flows directly into the canvas.
+   - Direct Help call band: ribbon artwork placed behind content (`z-index: 1`), phone number displayed in white on solid `#0D3B66` pill button (12.6:1 contrast ratio).
+   - Trust bar: emoji replaced with 28px gold SVG line icons (report, shield, person) on dark rounded squares.
+7. **Content & Modals:**
+   - Purged all unconfirmed specifics (`24/7`, `real-time`, `ambulance`, `triage`, `police verification`, `employment checks`, `quarterly`, `punctual`, `dosage checks`, `itemized bills`, `within`).
+   - Every modal rewritten as 3 short, general bullets describing coverage with no promises, numbers, or guarantees.
+8. **Mobile Viewport Excellence (412px and 390px):**
+   - Sticky bottom bar (`Call us` + `WhatsApp`) fixed to the bottom of the viewport with body `padding-bottom: 96px !important`, verified via scrolled viewport screenshot with zero overlap.
+   - Floating WhatsApp circle hidden on mobile; active on desktop.
+   - 20px horizontal container padding; hamburger button fully visible; zero horizontal overflow (`scrollWidth == innerWidth`).
+9. **Contrast & Accessibility (WCAG 2.1 AA):**
+   - All links, buttons, and small text reach >= 4.5:1 contrast in both light and dark modes (using `#7CC4F0`, white, and gold on navy).
+10. **Single Authoritative Enquiry Endpoint:**
+    - Every Enquire button routes to `GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8"` (`target="_blank"`, `rel="noopener noreferrer"`).
+11. **Self-Contained Static Site:** 100% Vanilla HTML5, CSS3, and JavaScript. Zero external frameworks, zero build steps, relative paths only.
+12. **Strict Security:** Full compliance with Content Security Policy (CSP), zero inline styles (`style="..."`), and zero inline `<script>` tags.
 
 ---
 
@@ -25,10 +51,10 @@ Per senior management (Ram Sir's) feedback, Website 2 has been restructured from
 
 ```text
 sustune-care-modern/
-├── index.html                   # Home page (<2 screens tall, landscape video, 2 service cards, trust strip)
-├── elder-care.html              # Sparsh Elder Care (<120 visible words, 4 interactive tiles, 9:16 video)
-├── property-management.html     # Aegis Property (<120 visible words, 4 interactive tiles, 9:16 video)
-├── about.html                   # Why Sustune, 4 Trust Pillars, 3 Founders, Hyderabad & Bengaluru
+├── index.html                   # Home page (Split hero, portrait video, 2 service cards, trust strip, call band)
+├── elder-care.html              # Sparsh Elder Care (4 interactive photo tiles, 4 modals, 9:16 spotlight video)
+├── property-management.html     # Aegis Property (4 interactive photo tiles, 4 modals, 9:16 spotlight video)
+├── about.html                   # Why Sustune, 4 Trust Pillars, 3 Founders, Active Operating Hubs
 ├── contact.html                 # Direct Coordinates, Enquire Form, WhatsApp, 4-question FAQ
 ├── 404.html                     # Branded HTTP 404 page sharing identical header, footer & nav
 ├── vercel.json                  # Production security headers (CSP, HSTS, frame-ancestors 'none')
@@ -44,30 +70,34 @@ sustune-care-modern/
     ├── js/
     │   └── main.js              # Theme manager, mobile drawer, tile modals, video autoplay, GOOGLE_FORM_URL
     ├── logo/
-    │   ├── sustune_logo_horizontal_lockup.svg  # Full-colour brand logo (used on light theme)
-    │   ├── sustune_emblem_reversed_white.png   # Reversed white emblem (used on dark theme / footer)
+    │   ├── sustune_emblem_@2x.webp # Official full-colour brand emblem
+    │   ├── sustune_logo_horizontal_lockup.svg
     │   ├── sustune_icon_favicon.svg
     │   ├── favicon_192x192.png
     │   └── favicon_32x32.ico
     ├── photos/
-    │   ├── contact-sheet.jpg    # Visual contact sheet reviewing all extracted stills
-    │   ├── home-hero.jpg        # Still frame from hero footage (<300 KB)
-    │   ├── elder-care-hero.jpg  # Sparsh hero photo (<300 KB)
-    │   ├── elder-care-2.jpg     # Sparsh secondary photo (<300 KB)
-    │   ├── property-hero.jpg    # Aegis hero photo (<300 KB)
-    │   ├── property-2.jpg       # Aegis secondary photo (<300 KB)
-    │   └── about.jpg            # Operations & team photo (<300 KB)
+    │   ├── contact-sheet.jpg    # Visual contact sheet reviewing all extracted video stills
+    │   ├── home-hero.jpg        # Fallback still for hero video
+    │   ├── elder-care-hero.jpg  # Sparsh hero photo
+    │   ├── elder-tile-1.jpg     # Emergency medical support coordination (people-first)
+    │   ├── elder-tile-2.jpg     # Doctor visit accompaniment
+    │   ├── elder-tile-3.jpg     # Prescription & grocery errands handover (people-first)
+    │   ├── elder-tile-4.jpg     # Companionship & wellness visits
+    │   ├── property-hero.jpg    # Modern Indian villa exterior
+    │   ├── property-tile-1.jpg  # Periodic physical inspections (exterior steps with manager)
+    │   ├── property-tile-2.jpg  # Tenant scouting & verification
+    │   ├── property-tile-3.jpg  # Rent collection & remittance
+    │   ├── property-tile-4.jpg  # Repairs & maintenance oversight
+    │   └── about.jpg            # NRI client family on call (distinct from elder-care-hero)
     └── video/
-        ├── home-hero.mp4        # Landscape 720p hero video with blurred letterbox (H.264/AAC, 2.6 MB, +faststart)
-        ├── home-hero-poster.jpg # Poster frame at 1s (35.6 KB)
+        ├── home-hero.mp4        # Clean portrait 9:16 hero video (H.264/AAC, 720x1280, 3.96 MB, +faststart)
+        ├── home-hero-poster.jpg # Poster frame at 1s (50.5 KB)
         ├── elder-care.mp4       # Portrait 9:16 Sparsh video (H.264/AAC, 3.49 MB, +faststart)
         ├── elder-care-poster.jpg# Poster frame at 1s (43.9 KB)
         ├── property.mp4         # Portrait 9:16 Aegis video (H.264/AAC, 3.90 MB, +faststart)
         ├── property-poster.jpg  # Poster frame at 1s (82.1 KB)
         ├── intro.mp4            # Portrait 9:16 About intro video (H.264/AAC, 4.47 MB, +faststart)
         ├── intro-poster.jpg     # Poster frame at 1s (95.7 KB)
-        ├── curiosity.mp4        # Portrait 9:16 teaser video (H.264/AAC, 1.11 MB, +faststart)
-        ├── curiosity-poster.jpg # Poster frame at 1s (88.4 KB)
         └── captions-placeholder.vtt # WebVTT subtitle track placeholder
 ```
 
@@ -91,18 +121,16 @@ To update the Google Form destination:
 
 ## 4. How to Replace Photos & Videos
 
-All asset filenames are standardized and stable so marketing-approved assets can replace placeholders without touching any HTML or CSS:
+All asset filenames are standardized and stable:
 
 ### Replacing Photos
 1. Optimize your new image to WebP or JPEG under **300 KB**.
 2. Save it directly over the existing file in `assets/photos/`:
-   - `home-hero.jpg` (Hero background fallback)
    - `elder-care-hero.jpg` (Sparsh hero)
-   - `elder-care-2.jpg` (Sparsh secondary card)
+   - `elder-tile-1.jpg` through `elder-tile-4.jpg` (Elder Care service tiles)
    - `property-hero.jpg` (Aegis hero)
-   - `property-2.jpg` (Aegis secondary card)
+   - `property-tile-1.jpg` through `property-tile-4.jpg` (Property service tiles)
    - `about.jpg` (About page hero)
-3. To regenerate the visual contact sheet, run the Python extraction script located in the scratch workspace.
 
 ### Replacing Videos
 Source videos must be encoded with H.264 video, AAC audio, `+faststart` (moov atom at start for instant streaming), 720p resolution, CRF ~26, under **8 MB**:
@@ -113,40 +141,21 @@ ffmpeg -i "input.mp4" -ss 00:00:00 -t 00:00:25 -vf "scale=720:1280" -c:v libx264
 # Generate matching poster at 1.0s:
 ffmpeg -ss 00:00:01.0 -i "assets/video/elder-care.mp4" -vframes 1 -q:v 3 "assets/video/elder-care-poster.jpg"
 ```
-Place the output files into `assets/video/`:
-- `home-hero.mp4` & `home-hero-poster.jpg` (Landscape 1280x720)
-- `elder-care.mp4` & `elder-care-poster.jpg` (Portrait 720x1280)
-- `property.mp4` & `property-poster.jpg` (Portrait 720x1280)
-- `intro.mp4` & `intro-poster.jpg` (Portrait 720x1280)
 
 ---
 
-## 5. How to Add New Pages
+## 5. Verification Checklist & Measurements
 
-To create a new page that matches the look, feel, accessibility, and navigation:
-1. **Duplicate `elder-care.html` or `about.html`** as a base template.
-2. **Update the Head Tags:**
-   - `<title>New Page Name | Sustune Care</title>`
-   - Meta description and Open Graph tags.
-3. **Update Navigation:**
-   - Add `<a href="new-page.html" class="desktop-nav-link">New Page</a>` to the desktop navigation list.
-   - Add `<a href="new-page.html" class="mobile-nav-link">New Page</a>` to the mobile drawer.
-   - Set `class="... is-active"` on the active page link.
-4. **Update Breadcrumbs:**
-   ```html
-   <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-     <div class="container breadcrumb-container">
-       <ol class="breadcrumb-list">
-         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-         <li class="breadcrumb-separator" aria-hidden="true">&gt;</li>
-         <li class="breadcrumb-item" aria-current="page">New Page</li>
-       </ol>
-       <a href="index.html" class="back-home-link"><span aria-hidden="true">&larr;</span> Back to Home</a>
-     </div>
-   </nav>
-   ```
-5. **Keep Visible Text Crisp:** Follow the rule of under 120 words of visible text, offloading bulleted details to modals (`.tile-modal`) or accordions (`.faq-panel`).
-6. **Update `sitemap.xml`:** Add the new page URL with `<changefreq>` and `<priority>`.
+Every item requested by Ram Sir has been validated with headless Playwright testing:
+- **Logo Area:** Side-by-side verification confirms full-colour emblem at 64px desktop / 48px mobile, live text "SUSTUNE CARE", gold tagline, and #F1F5F9 badge with gold border in dark mode.
+- **Theme Toggle:** 44px icon-only button with sun/moon SVG icons, `aria-label="Switch theme"`, and tooltip title.
+- **Hero Video Autoplay:** Verified `currentTime` advances continuously (advances >3s within 3.5s).
+- **Single-line Header:** Measured at 1280px viewport (height: 85px, zero wrapping).
+- **Mobile Viewport Scrolling:** Viewport screenshot at 412px confirms bottom sticky bar never covers footer or buttons (`padding-bottom: 96px !important`).
+- **Zero Horizontal Overflow:** Verified across all pages at 412px (`scrollWidth == innerWidth`).
+- **Security & CSP:** 0 console errors, 0 CSP violations, 100% real files.
+- **All Assets Return 200 OK:** Every `.mp4`, poster, and image returns HTTP 200.
+- **Enquire Buttons:** Every button verified pointing to `https://forms.gle/o1y5bqXmaM8fCLvF8`.
 
 ---
 

@@ -61,15 +61,11 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
       doc.setAttribute("data-theme", theme);
       if (themeToggleBtn) {
         themeToggleBtn.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
-        const nextTitle = theme === "light" ? "Switch theme (currently light)" : "Switch theme (currently dark)";
-        themeToggleBtn.setAttribute("aria-label", nextTitle);
-        themeToggleBtn.setAttribute("title", nextTitle);
+        themeToggleBtn.setAttribute("aria-label", "Switch theme");
+        themeToggleBtn.setAttribute("title", theme === "light" ? "Switch to dark theme" : "Switch to light theme");
       }
       if (themeIcon) {
         themeIcon.className = theme === "light" ? "theme-icon icon-moon" : "theme-icon icon-sun";
-      }
-      if (themeLabel) {
-        themeLabel.textContent = theme === "light" ? "Switch theme" : "Switch theme";
       }
     }
   }

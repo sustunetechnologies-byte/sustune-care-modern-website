@@ -36,15 +36,13 @@
   <!-- Header -->
   <header class="site-header" role="banner">
     <div class="container header-container">
+      <!-- Brand Logo (Live Text + Full-Colour Emblem per Ram Sir) -->
       <a href="index.html" class="header-logo" aria-label="Sustune Care Home">
-        <div class="logo-lockup--light">
-          <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="220" height="56" class="logo-svg">
-        </div>
-        <div class="logo-lockup--dark">
-          <img src="assets/logo/sustune_emblem_reversed_white.png" alt="" width="48" height="48" class="logo-emblem">
+        <div class="logo-lockup">
+          <img src="assets/logo/sustune_emblem_@2x.webp" alt="Sustune Care Emblem" width="64" height="64" class="logo-emblem">
           <div class="logo-text">
             <span class="logo-brand">SUSTUNE CARE</span>
-            <span class="logo-tagline">PROTECTED CARE &bull; SUSTAINED DIGNITY</span>
+            <span class="logo-tagline">Protected Care. Sustained Dignity.</span>
           </div>
         </div>
       </a>
@@ -62,9 +60,8 @@
 
       <div class="header-actions">
         <!-- Theme Toggle (Icon-only 44px) -->
-        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch theme" aria-pressed="false">
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch to dark theme" aria-pressed="false">
           <span id="theme-toggle-icon" class="theme-icon icon-moon" aria-hidden="true"></span>
-          <span id="theme-toggle-label" class="sr-only">Switch theme</span>
         </button>
 
         <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary header-enquire-btn btn-enquire" target="_blank" rel="noopener noreferrer">
@@ -85,7 +82,13 @@
   <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop" aria-hidden="true"></div>
   <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation Drawer">
     <div class="mobile-drawer-header">
-      <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="180" height="46" class="logo-svg">
+      <div class="logo-lockup">
+        <img src="assets/logo/sustune_emblem_@2x.webp" alt="Sustune Care Emblem" width="48" height="48" class="logo-emblem">
+        <div class="logo-text">
+          <span class="logo-brand">SUSTUNE CARE</span>
+          <span class="logo-tagline">Protected Care. Sustained Dignity.</span>
+        </div>
+      </div>
     </div>
     <nav class="mobile-drawer-nav" aria-label="Mobile Navigation">
       <a href="index.html" class="mobile-nav-link">Home</a>
@@ -150,7 +153,11 @@
     <!-- 4 Interactive Photo Service Tiles (>= 60% Photo area per Ram Sir) -->
     <section class="section-padding" aria-labelledby="services-title">
       <div class="container">
-        <h2 id="services-title" class="sr-only">Sparsh Services</h2>
+        <div class="section-header">
+          <span class="hero-eyebrow">SPARSH ELDER CARE</span>
+          <h2 id="services-title" class="section-title">Sparsh Services</h2>
+          <p class="section-subline">Comprehensive on-ground personal and medical coordination for your parents.</p>
+        </div>
         <div class="service-tiles-grid">
           <!-- Photo Tile 1 -->
           <div class="service-photo-tile">
@@ -268,11 +275,11 @@
     <div class="tile-modal-card">
       <button type="button" class="tile-modal-close" aria-label="Close details dialog">&times;</button>
       <h3 id="modal-sparsh-emergency-title" class="tile-modal-title">Emergency Medical Support</h3>
-      <p class="tile-modal-subtitle">Dedicated emergency coordination during critical health moments.</p>
+      <p class="tile-modal-subtitle">Dedicated on-ground coordination during critical health situations.</p>
       <ul class="tile-modal-bullets">
-        <li>Immediate ambulance coordination and hospital liaison.</li>
-        <li>Real-time medical status updates sent directly to NRI family.</li>
-        <li>On-site accompaniment through admission and preliminary triage.</li>
+        <li>Urgent hospital coordination and on-site support.</li>
+        <li>Direct communication liaison for overseas family members.</li>
+        <li>Assistance with admission formalities and preliminary care logistics.</li>
       </ul>
       <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
         Book a Consultation
@@ -288,9 +295,9 @@
       <h3 id="modal-sparsh-doctor-title" class="tile-modal-title">Doctor Visit Accompaniment</h3>
       <p class="tile-modal-subtitle">Gentle, dignified guidance for outpatient and diagnostic consultations.</p>
       <ul class="tile-modal-bullets">
-        <li>Dedicated escort from home to clinic and safely back.</li>
-        <li>Careful recording of doctor instructions and medication regimens.</li>
-        <li>Timely diagnostic sample tracking and report delivery.</li>
+        <li>Dedicated door-to-door escort for clinic and hospital appointments.</li>
+        <li>Clear note-taking of physician instructions and care guidance.</li>
+        <li>Assistance with diagnostic tests and report collection.</li>
       </ul>
       <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
         Book a Consultation
@@ -306,9 +313,9 @@
       <h3 id="modal-sparsh-errands-title" class="tile-modal-title">Prescription &amp; Grocery Errands</h3>
       <p class="tile-modal-subtitle">Reliable domestic logistics relieving your parents of daily friction.</p>
       <ul class="tile-modal-bullets">
-        <li>Verified authentic pharmacy fulfillment with dosage checks.</li>
-        <li>Weekly pantry, fruit, and grocery restocking per parents' preferences.</li>
-        <li>Itemized digital bills and doorstep delivery confirmations.</li>
+        <li>Routine fulfillment of authentic prescribed medications.</li>
+        <li>Fresh groceries, fruits, and household essentials doorstep delivery.</li>
+        <li>Coordinated errands aligned with your parents' dietary preferences.</li>
       </ul>
       <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
         Book a Consultation
@@ -324,9 +331,9 @@
       <h3 id="modal-sparsh-wellness-title" class="tile-modal-title">Companionship &amp; Wellness Visits</h3>
       <p class="tile-modal-subtitle">Heartfelt personal visits bringing warmth and emotional security.</p>
       <ul class="tile-modal-bullets">
-        <li>Friendly home visits engaging in conversation and recreation.</li>
-        <li>Assisted strolls, park outings, or gentle mobility exercise.</li>
-        <li>Regular family wellness summaries reassuring overseas children.</li>
+        <li>Friendly visits offering conversation, leisure, and engagement.</li>
+        <li>Accompanied walks, park visits, or gentle mobility support.</li>
+        <li>Regular family wellbeing summaries shared with overseas children.</li>
       </ul>
       <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary btn-enquire" target="_blank" rel="noopener noreferrer">
         Book a Consultation
@@ -339,7 +346,13 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="180" height="46" class="footer-logo-inverted">
+          <div class="logo-lockup footer-logo-lockup">
+            <img src="assets/logo/sustune_emblem_@2x.webp" alt="Sustune Care Emblem" width="56" height="56" class="logo-emblem">
+            <div class="logo-text">
+              <span class="logo-brand">SUSTUNE CARE</span>
+              <span class="logo-tagline">Protected Care. Sustained Dignity.</span>
+            </div>
+          </div>
           <p>Protected Care. Sustained Dignity. Caring for what matters most in India.</p>
         </div>
         <div>
