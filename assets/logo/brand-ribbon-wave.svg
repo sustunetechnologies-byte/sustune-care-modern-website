@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 180" fill="none" preserveAspectRatio="none">
+  <defs>
+    <!-- Brand Gradients -->
+    <linearGradient id="marineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#07223b" />
+      <stop offset="45%" stop-color="#0D3B66" />
+      <stop offset="100%" stop-color="#164e83" />
+    </linearGradient>
+    <linearGradient id="ceruleanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#005b94" />
+      <stop offset="50%" stop-color="#0073B7" />
+      <stop offset="100%" stop-color="#2ba5ed" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#996f21" />
+      <stop offset="30%" stop-color="#C99738" />
+      <stop offset="70%" stop-color="#f0c265" />
+      <stop offset="100%" stop-color="#b5852b" />
+    </linearGradient>
+    <filter id="softShadow" x="-5%" y="-20%" width="110%" height="160%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#07192b" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Layer 1: Deep Marine Ribbon Base -->
+  <path d="M0,120 C320,180 540,60 860,110 C1140,150 1320,80 1440,95 L1440,180 L0,180 Z" fill="url(#marineGrad)" opacity="0.95" />
+
+  <!-- Layer 2: Vibrant Cerulean Flowing Ribbon -->
+  <path d="M0,75 C280,140 580,20 900,90 C1180,145 1340,65 1440,80 L1440,140 C1300,125 1120,185 860,130 C560,70 300,175 0,110 Z" fill="url(#ceruleanGrad)" filter="url(#softShadow)" opacity="0.9" />
+
+  <!-- Layer 3: Dynamic Gold Swirl Ribbon -->
+  <path d="M0,45 C240,110 500,-10 820,60 C1100,120 1280,45 1440,55 L1440,78 C1280,68 1100,140 820,80 C500,10 240,125 0,62 Z" fill="url(#goldGrad)" filter="url(#softShadow)" />
+
+  <!-- Layer 4: Delicate Gold Highlight Accent Ribbon -->
+  <path d="M0,48 C240,112 500,-6 820,63 C1100,122 1280,47 1440,57" stroke="#FFF2B2" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+</svg>

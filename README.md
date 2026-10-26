@@ -11,12 +11,13 @@
 
 Per senior management (Ram Sir's) feedback, Website 2 has been restructured from a long single-page layout into a **fast, visual, picture-led multi-page experience**:
 1. **Less Scrolling, More Clicking:** Minimal visible text (under 120 words on service pages), high visual engagement, interactive service tiles with modal disclosures, and dedicated pages.
-2. **Dedicated Pages:** Separate pages for Sparsh Elder Care and Aegis Property Management, each featuring a large visual hero, 4 interactive service tiles, and a short 9:16 video card.
-3. **Approved Brand Look & Large Logo:** Light theme is the default so the official full-color gold and blue logo is showcased at 56px height on desktop (48px mobile), with dark mode available and persisted.
-4. **Hero Video Clarity:** The home hero features a landscape background video with a gentle transparent overlay, keeping the motion clearly visible.
-5. **Single Authoritative Enquiry Endpoint:** Every Enquire button across all pages routes through `GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8"` (`target="_blank"`, `rel="noopener noreferrer"`).
-6. **Self-Contained Static Site:** 100% Vanilla HTML5, CSS3, and JavaScript. Zero external frameworks, zero build steps, relative paths only.
-7. **Strict Security & WCAG 2.1 AA:** Full compliance with Content Security Policy (CSP), zero inline styles or scripts, accessible modal focus traps, and keyboard navigation.
+2. **Dedicated Pages:** Separate pages for Sparsh Elder Care (hospital aesthetic) and Aegis Property Management (luxury real estate aesthetic), each featuring large visual hero imagery, 4 interactive service tiles, and video modal triggers.
+3. **Approved Brand Look & Ribbon Artwork:** Light theme default showcasing the official gold & blue logo (56px desktop / 48px mobile), dark mode toggle, and custom SVG flowing brand ribbon artwork (`brand-ribbon-wave.svg`, `ribbon-divider.svg`) in approved hexes `#0D3B66`, `#0073B7`, `#C99738`.
+4. **Mobile Sticky Bottom Bar:** Single sticky bottom bar with "Call us" and "WhatsApp" buttons on mobile viewports (< 768px), with the floating WhatsApp button hidden on mobile and active on desktop only.
+5. **Accessible Video Modal Player:** The home hero "Watch Our Story" button and service video buttons open `intro.mp4`, `elder-care.mp4`, and `property.mp4` in an accessible dialog with focus trap, Escape key closing, and automatic pausing on close.
+6. **Single Authoritative Enquiry Endpoint:** Every Enquire button routes through `GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8"` (`target="_blank"`, `rel="noopener noreferrer"`).
+7. **Self-Contained Static Site:** 100% Vanilla HTML5, CSS3, and JavaScript. Zero external frameworks, zero build steps, relative paths only.
+8. **Strict Security & WCAG 2.1 AA:** Full compliance with Content Security Policy (CSP), zero inline styles or scripts, accessible modal focus traps, and keyboard navigation.
 
 ---
 

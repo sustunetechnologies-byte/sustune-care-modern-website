@@ -231,39 +231,109 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
   }
 
   /* ==========================================================================
-     5. Hero Video Autoplay Management
+     5. Accessible Video Modal Player
+     Accessible modal, focus trap, Escape to close, pause on close
      ========================================================================== */
-  function initHeroVideo() {
-    const video = document.getElementById("home-hero-video");
-    if (!video) return;
+  function initVideoModal() {
+    const videoModal = document.getElementById("video-modal");
+    if (!videoModal) return;
 
-    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const modalVideo = document.getElementById("modal-video-element");
+    const modalVideoSource = document.getElementById("modal-video-source");
+    const modalTitle = document.getElementById("video-modal-title");
+    const closeBtn = document.getElementById("video-modal-close-btn");
+    const backdrop = document.getElementById("video-modal-backdrop");
+    const triggers = document.querySelectorAll(".js-video-modal-trigger");
 
-    const playVideo = () => {
-      if (!reducedMotionQuery.matches) {
-        const promise = video.play();
-        if (promise !== undefined) {
-          promise.catch(() => {
-            const retry = () => {
-              video.play().catch(() => {});
-              document.removeEventListener("click", retry);
-              document.removeEventListener("touchstart", retry);
-            };
-            document.addEventListener("click", retry, { once: true });
-            document.addEventListener("touchstart", retry, { once: true });
+    let lastActiveTrigger = null;
+
+    function openModal(trigger) {
+      lastActiveTrigger = trigger;
+      const videoSrc = trigger.getAttribute("data-video-src") || "assets/video/intro.mp4";
+      const videoTitle = trigger.getAttribute("data-video-title") || "Sustune Care Story";
+      const videoPoster = trigger.getAttribute("data-video-poster") || "assets/video/intro-poster.jpg";
+
+      if (modalTitle) modalTitle.textContent = videoTitle;
+      if (modalVideo) {
+        modalVideo.setAttribute("poster", videoPoster);
+        if (modalVideoSource && modalVideoSource.getAttribute("src") !== videoSrc) {
+          modalVideoSource.setAttribute("src", videoSrc);
+          modalVideo.load();
+        }
+      }
+
+      videoModal.removeAttribute("hidden");
+      videoModal.classList.add("is-open");
+      videoModal.setAttribute("aria-hidden", "false");
+      body.classList.add("modal-locked");
+
+      // Auto play video when opened
+      if (modalVideo) {
+        const playPromise = modalVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Autoplay might be prevented without user gesture on some browsers
           });
         }
-      } else {
-        video.pause();
       }
-    };
 
-    playVideo();
-    reducedMotionQuery.addEventListener("change", (e) => {
-      if (e.matches) {
-        video.pause();
-      } else {
-        playVideo();
+      // Trap focus: focus close button
+      if (closeBtn) {
+        closeBtn.focus();
+      }
+    }
+
+    function closeModal() {
+      // Pause video on close per requirement
+      if (modalVideo) {
+        modalVideo.pause();
+      }
+
+      videoModal.classList.remove("is-open");
+      videoModal.setAttribute("aria-hidden", "true");
+      videoModal.setAttribute("hidden", "until-found");
+      body.classList.remove("modal-locked");
+
+      // Return focus to the trigger element
+      if (lastActiveTrigger) {
+        lastActiveTrigger.focus();
+        lastActiveTrigger = null;
+      }
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", (e) => {
+        e.preventDefault();
+        openModal(trigger);
+      });
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeModal);
+    }
+    if (backdrop) {
+      backdrop.addEventListener("click", closeModal);
+    }
+
+    // Keyboard handlers: Escape to close and Tab focus trap
+    document.addEventListener("keydown", (e) => {
+      if (!videoModal.classList.contains("is-open")) return;
+
+      if (e.key === "Escape") {
+        closeModal();
+      } else if (e.key === "Tab") {
+        const focusable = videoModal.querySelectorAll("button, [href], video, [tabindex]:not([tabindex='-1'])");
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     });
   }
@@ -301,7 +371,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
     initTheme();
     initMobileMenu();
     initServiceTileModals();
-    initHeroVideo();
+    initVideoModal();
     initFaq();
   }
 
