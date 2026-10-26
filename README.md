@@ -1,20 +1,22 @@
-# Sustune Care — Website 2: Modern, Interactive & Visual
+# Sustune Care — Multi-Page Picture-Led Website
 
-> **Benchmark Front-End Project**  
+> **Modern, Interactive, Picture-Led Multi-Page Architecture**  
 > Serving Non-Resident Indians (NRIs) with **Aegis** (Property Stewardship) and **Sparsh** (Elderly Parent Care) in **Hyderabad** and **Bengaluru**.  
 > Tagline: *"Care for your property. Care for your parents. Peace of mind for you."*  
-> Short Tagline: *"Protected Care. Sustained Dignity."*
+> Brand Promise: *"Protected Care. Sustained Dignity."*
 
 ---
 
 ## 1. Overview & Architecture
 
-This repository contains the complete source code for **Website 2 (Modern, Interactive & Visual)** for Sustune Care. It is engineered with modern front-end craftsmanship without using any build pipelines, npm packages, or external UI frameworks (No Tailwind CDN, No React, No Vite).
-
-- **100% Self-Contained:** Uses only relative paths (`assets/...`) and works directly by double-clicking `index.html` or running a lightweight local server.
-- **Production-Ready Static Deployment:** Deploys instantly to **Vercel**, **AWS Amplify**, or **Netlify** with zero build configuration.
-- **WCAG 2.1 AA Compliant:** Accessible focus rings, semantic landmark hierarchy, ARIA roles, minimum 44px tap targets, and verified 4.5:1 text contrast.
-- **Enterprise Security:** Strict Content Security Policy (CSP), HSTS, frame-ancestors restriction, and zero inline script/style execution.
+Per senior management (Ram Sir's) feedback, Website 2 has been restructured from a long single-page layout into a **fast, visual, picture-led multi-page experience**:
+1. **Less Scrolling, More Clicking:** Minimal visible text (under 120 words on service pages), high visual engagement, interactive service tiles with modal disclosures, and dedicated pages.
+2. **Dedicated Pages:** Separate pages for Sparsh Elder Care and Aegis Property Management, each featuring a large visual hero, 4 interactive service tiles, and a short 9:16 video card.
+3. **Approved Brand Look & Large Logo:** Light theme is the default so the official full-color gold and blue logo is showcased at 56px height on desktop (48px mobile), with dark mode available and persisted.
+4. **Hero Video Clarity:** The home hero features a landscape background video with a gentle transparent overlay, keeping the motion clearly visible.
+5. **Single Authoritative Enquiry Endpoint:** Every Enquire button across all pages routes through `GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8"` (`target="_blank"`, `rel="noopener noreferrer"`).
+6. **Self-Contained Static Site:** 100% Vanilla HTML5, CSS3, and JavaScript. Zero external frameworks, zero build steps, relative paths only.
+7. **Strict Security & WCAG 2.1 AA:** Full compliance with Content Security Policy (CSP), zero inline styles or scripts, accessible modal focus traps, and keyboard navigation.
 
 ---
 
@@ -22,171 +24,149 @@ This repository contains the complete source code for **Website 2 (Modern, Inter
 
 ```text
 sustune-care-modern/
-├── index.html                   # Primary single-page modern website
-├── 404.html                     # Branded HTTP 404 error page
-├── vercel.json                  # Production security headers for Vercel
+├── index.html                   # Home page (<2 screens tall, landscape video, 2 service cards, trust strip)
+├── elder-care.html              # Sparsh Elder Care (<120 visible words, 4 interactive tiles, 9:16 video)
+├── property-management.html     # Aegis Property (<120 visible words, 4 interactive tiles, 9:16 video)
+├── about.html                   # Why Sustune, 4 Trust Pillars, 3 Founders, Hyderabad & Bengaluru
+├── contact.html                 # Direct Coordinates, Enquire Form, WhatsApp, 4-question FAQ
+├── 404.html                     # Branded HTTP 404 page sharing identical header, footer & nav
+├── vercel.json                  # Production security headers (CSP, HSTS, frame-ancestors 'none')
 ├── _headers                     # Production security headers for Netlify
-├── robots.txt                   # Search crawler directives
-├── sitemap.xml                  # XML sitemap with canonical URLs
-├── README.md                    # Architecture and operations guide
-├── BEST_PRACTICES.md            # Comprehensive front-end benchmark checklist
-├── .gitignore                   # Excludes node_modules/, .DS_Store, Thumbs.db
-├── .well-known/
-│   └── security.txt             # RFC 9116 security contact registry
+├── robots.txt                   # Crawler directives linking to sitemap.xml
+├── sitemap.xml                  # Canonical XML sitemap with all 5 active routes
+├── README.md                    # Operational handbook & guide
+├── BEST_PRACTICES.md            # Front-end benchmark checklist
+├── .gitignore                   # Excludes source-videos/, OS caches, temp files
 └── assets/
     ├── css/
-    │   └── style.css            # Vanilla CSS design system & responsive layout
+    │   └── style.css            # Complete design system (light default, dark toggle, responsive layout)
     ├── js/
-    │   └── main.js              # Vanilla JS interactive logic & event binding
+    │   └── main.js              # Theme manager, mobile drawer, tile modals, video autoplay, GOOGLE_FORM_URL
     ├── logo/
-    │   ├── sustune_emblem_reversed_white.png  # Primary emblem on dark backgrounds
-    │   ├── sustune_logo_horizontal_lockup.svg  # Primary lockup on light backgrounds
-    │   ├── sustune_logo_vertical_lockup.svg
-    │   ├── sustune_emblem_@2x.webp
+    │   ├── sustune_logo_horizontal_lockup.svg  # Full-colour brand logo (used on light theme)
+    │   ├── sustune_emblem_reversed_white.png   # Reversed white emblem (used on dark theme / footer)
     │   ├── sustune_icon_favicon.svg
     │   ├── favicon_192x192.png
     │   └── favicon_32x32.ico
+    ├── photos/
+    │   ├── contact-sheet.jpg    # Visual contact sheet reviewing all extracted stills
+    │   ├── home-hero.jpg        # Still frame from hero footage (<300 KB)
+    │   ├── elder-care-hero.jpg  # Sparsh hero photo (<300 KB)
+    │   ├── elder-care-2.jpg     # Sparsh secondary photo (<300 KB)
+    │   ├── property-hero.jpg    # Aegis hero photo (<300 KB)
+    │   ├── property-2.jpg       # Aegis secondary photo (<300 KB)
+    │   └── about.jpg            # Operations & team photo (<300 KB)
     └── video/
-        ├── hero-landscape.mp4   # Hero background video (muted, loop, cover)
-        ├── hero-poster.jpg      # Fallback poster for hero video
-        ├── launch.mp4           # 9:16 portrait video - Launch intro
-        ├── launch-poster.jpg
-        ├── aegis.mp4            # 9:16 portrait video - Aegis property service
-        ├── aegis-poster.jpg
-        ├── sparsh.mp4           # 9:16 portrait video - Sparsh parent service
-        ├── sparsh-poster.jpg
-        ├── problem.mp4          # 9:16 portrait video - Distance dilemma
-        ├── problem-poster.jpg
-        └── captions-placeholder.vtt # WebVTT captions track file
+        ├── home-hero.mp4        # Landscape 720p hero video with blurred letterbox (H.264/AAC, 2.6 MB, +faststart)
+        ├── home-hero-poster.jpg # Poster frame at 1s (35.6 KB)
+        ├── elder-care.mp4       # Portrait 9:16 Sparsh video (H.264/AAC, 3.49 MB, +faststart)
+        ├── elder-care-poster.jpg# Poster frame at 1s (43.9 KB)
+        ├── property.mp4         # Portrait 9:16 Aegis video (H.264/AAC, 3.90 MB, +faststart)
+        ├── property-poster.jpg  # Poster frame at 1s (82.1 KB)
+        ├── intro.mp4            # Portrait 9:16 About intro video (H.264/AAC, 4.47 MB, +faststart)
+        ├── intro-poster.jpg     # Poster frame at 1s (95.7 KB)
+        ├── curiosity.mp4        # Portrait 9:16 teaser video (H.264/AAC, 1.11 MB, +faststart)
+        ├── curiosity-poster.jpg # Poster frame at 1s (88.4 KB)
+        └── captions-placeholder.vtt # WebVTT subtitle track placeholder
 ```
 
 ---
 
-## 3. Running Locally
+## 3. How to Change GOOGLE_FORM_URL
 
-Because this project uses plain HTML, CSS, and JavaScript, no compilation or dependency installation is needed.
+All "Enquire Now" and "Book a Consultation" buttons across all HTML pages automatically inherit their destination URL from a single variable in [`assets/js/main.js`](assets/js/main.js):
 
-### Option A: Double-Click
-Double-click `index.html` in your file explorer. It will open directly in any modern browser using the `file://` protocol.
+```javascript
+// Line 7 of assets/js/main.js
+const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
+```
 
-### Option B: Local Python HTTP Server (Recommended)
-Open a terminal in this workspace folder and run:
+To update the Google Form destination:
+1. Open [`assets/js/main.js`](assets/js/main.js).
+2. Change the string assigned to `GOOGLE_FORM_URL`.
+3. Save the file. All buttons with class `.btn-enquire` or `.js-enquire-btn` across all pages will immediately point to the new URL with `target="_blank"` and `rel="noopener noreferrer"`.
 
+---
+
+## 4. How to Replace Photos & Videos
+
+All asset filenames are standardized and stable so marketing-approved assets can replace placeholders without touching any HTML or CSS:
+
+### Replacing Photos
+1. Optimize your new image to WebP or JPEG under **300 KB**.
+2. Save it directly over the existing file in `assets/photos/`:
+   - `home-hero.jpg` (Hero background fallback)
+   - `elder-care-hero.jpg` (Sparsh hero)
+   - `elder-care-2.jpg` (Sparsh secondary card)
+   - `property-hero.jpg` (Aegis hero)
+   - `property-2.jpg` (Aegis secondary card)
+   - `about.jpg` (About page hero)
+3. To regenerate the visual contact sheet, run the Python extraction script located in the scratch workspace.
+
+### Replacing Videos
+Source videos must be encoded with H.264 video, AAC audio, `+faststart` (moov atom at start for instant streaming), 720p resolution, CRF ~26, under **8 MB**:
+```bash
+# Example FFmpeg command for portrait 9:16 video:
+ffmpeg -i "input.mp4" -ss 00:00:00 -t 00:00:25 -vf "scale=720:1280" -c:v libx264 -crf 26 -preset slow -movflags +faststart -c:a aac -b:a 128k "assets/video/elder-care.mp4"
+
+# Generate matching poster at 1.0s:
+ffmpeg -ss 00:00:01.0 -i "assets/video/elder-care.mp4" -vframes 1 -q:v 3 "assets/video/elder-care-poster.jpg"
+```
+Place the output files into `assets/video/`:
+- `home-hero.mp4` & `home-hero-poster.jpg` (Landscape 1280x720)
+- `elder-care.mp4` & `elder-care-poster.jpg` (Portrait 720x1280)
+- `property.mp4` & `property-poster.jpg` (Portrait 720x1280)
+- `intro.mp4` & `intro-poster.jpg` (Portrait 720x1280)
+
+---
+
+## 5. How to Add New Pages
+
+To create a new page that matches the look, feel, accessibility, and navigation:
+1. **Duplicate `elder-care.html` or `about.html`** as a base template.
+2. **Update the Head Tags:**
+   - `<title>New Page Name | Sustune Care</title>`
+   - Meta description and Open Graph tags.
+3. **Update Navigation:**
+   - Add `<a href="new-page.html" class="desktop-nav-link">New Page</a>` to the desktop navigation list.
+   - Add `<a href="new-page.html" class="mobile-nav-link">New Page</a>` to the mobile drawer.
+   - Set `class="... is-active"` on the active page link.
+4. **Update Breadcrumbs:**
+   ```html
+   <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+     <div class="container breadcrumb-container">
+       <ol class="breadcrumb-list">
+         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+         <li class="breadcrumb-separator" aria-hidden="true">&gt;</li>
+         <li class="breadcrumb-item" aria-current="page">New Page</li>
+       </ol>
+       <a href="index.html" class="back-home-link"><span aria-hidden="true">&larr;</span> Back to Home</a>
+     </div>
+   </nav>
+   ```
+5. **Keep Visible Text Crisp:** Follow the rule of under 120 words of visible text, offloading bulleted details to modals (`.tile-modal`) or accordions (`.faq-panel`).
+6. **Update `sitemap.xml`:** Add the new page URL with `<changefreq>` and `<priority>`.
+
+---
+
+## 6. Running Locally
+
+### Option A: Local Python HTTP Server (Recommended)
 ```bash
 python -m http.server 8000
 ```
+Open [http://localhost:8000](http://localhost:8000).
 
-Then visit [http://localhost:8000](http://localhost:8000) in your web browser.
-
-### Option C: Node HTTP Server (Alternative)
+### Option B: Node HTTP Server
 ```bash
 npx serve .
 ```
 
 ---
 
-## 4. Deployment Instructions
+## 7. Security & Deployment
 
-### Vercel Deployment
-1. Import this repository or directory into your Vercel dashboard.
-2. Leave **Build Command** blank.
-3. Leave **Output Directory** set to the project root (`.`).
-4. The provided [`vercel.json`](vercel.json) automatically enforces security headers across all routes.
-
-### Netlify Deployment
-1. Drag and drop this folder into the Netlify web app, or link your Git repository.
-2. Leave **Build command** empty and **Publish directory** as `.`.
-3. The provided [`_headers`](_headers) file will automatically configure Content Security Policy and security headers.
-
-### AWS Amplify Deployment
-1. Connect repository in AWS Amplify Console.
-2. In build settings, specify:
-   ```yaml
-   version: 1
-   frontend:
-     phases:
-       build:
-         commands: []
-     artifacts:
-       baseDirectory: /
-       files:
-         - '**/*'
-     cache:
-       paths: []
-   ```
-3. Deploy directly without any build step.
-
----
-
-## 5. How to Update the Enquiry Link
-
-All "Enquire", "Book a Consultation", and "Get Started" buttons across the application dynamically derive their destination link from a single constant.
-
-Open [`assets/js/main.js`](assets/js/main.js) and locate Line 7:
-
-```javascript
-const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
-```
-
-Update this URL to your new Google Form, HubSpot form, or scheduling link. Every button on the site will automatically update and open the new target with `rel="noopener noreferrer"`.
-
----
-
-## 6. How to Replace Founder Placeholders
-
-In [`index.html`](index.html), search for the `<!-- REPLACE ME -->` HTML comments inside the `#founders` section (around lines 330–380):
-
-```html
-<!-- REPLACE ME: Founder 1 Profile Details -->
-<article class="card founder-card reveal-on-scroll">
-  <div class="founder-avatar-wrapper">
-    <!-- Replace this SVG with your 1:1 ratio founder photo -->
-    <img src="assets/images/founder1.jpg" alt="Priya Sharma" class="founder-avatar" width="120" height="120">
-  </div>
-  <h3>Founder Name</h3>
-  <div class="founder-role">Co-Founder & Managing Director</div>
-  <p class="founder-bio">Two-line biographical summary highlighting professional background and leadership.</p>
-  <a href="https://linkedin.com/in/founder-profile" class="founder-social-link" aria-label="Founder LinkedIn Profile" target="_blank" rel="noopener noreferrer">
-    <span aria-hidden="true">in</span>
-  </a>
-</article>
-```
-
----
-
-## 7. How to Replace Video Assets
-
-All video files reside in `assets/video/`. To substitute production footage:
-
-1. **Hero Background Video:**
-   - Replace `assets/video/hero-landscape.mp4` (16:9 landscape video).
-   - Replace `assets/video/hero-poster.jpg` (poster frame).
-2. **Portrait Showcase Videos (9:16 Aspect Ratio):**
-   - `assets/video/launch.mp4` & `assets/video/launch-poster.jpg`
-   - `assets/video/aegis.mp4` & `assets/video/aegis-poster.jpg`
-   - `assets/video/sparsh.mp4` & `assets/video/sparsh-poster.jpg`
-   - `assets/video/problem.mp4` & `assets/video/problem-poster.jpg`
-3. **Captions & Subtitles:**
-   - Update `assets/video/captions-placeholder.vtt` with actual WebVTT timestamps and transcripts for full accessibility compliance.
-
----
-
-## 8. Brand Standards & Rules
-
-- **Palette:**
-  - Imperial Gold: `#C99738`
-  - Bronze: `#8B601C`
-  - Cerulean: `#0073B7`
-  - Deep Marine: `#0D3B66`
-  - Emerald: `#0A8754`
-  - Slate: `#1E293B`
-  - Mist: `#F1F5F9`
-  - White: `#FFFFFF`
-- **Contrast Rule:** Never place white text on plain gold. Gold buttons must use Deep Marine (`#0D3B66`) or Slate text to maintain WCAG AA contrast.
-- **Logos:** Minimum height 48px; never stretch, recolor, or crop.
-- **Experience Claim:** Only the verified phrasing *"Executive team with 20+ years of professional experience"* is permitted. No invented metrics or awards.
-- **Contact:**
-  - Phone: `+91 89856 34239`
-  - WhatsApp: `+1 206 713 6114` ([https://wa.me/12067136114](https://wa.me/12067136114))
-  - Email: `contact@sustunecare.com`
-  - Hubs: Hyderabad, Telangana &amp; Bengaluru, Karnataka
+- **Vercel:** Deploys instantly from the repository root. `vercel.json` provides strict security headers.
+- **Content Security Policy (CSP):**
+  `default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; frame-ancestors 'none';`
+  Zero inline styles (`style="..."`) and zero inline `<script>` blocks ensure seamless CSP enforcement without console violations.

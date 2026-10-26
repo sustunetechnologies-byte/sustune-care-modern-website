@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
   <title>404 - Page Not Found | Sustune Care</title>
+  <meta name="title" content="404 - Page Not Found | Sustune Care">
   <meta name="description" content="The page you are looking for does not exist or has been moved. Return to Sustune Care homepage.">
   <meta name="robots" content="noindex, follow">
 
@@ -26,62 +29,158 @@
   <!-- Header -->
   <header class="site-header" role="banner">
     <div class="container header-container">
-      <a href="index.html#hero" class="header-logo" aria-label="Sustune Care Home">
-        <div class="logo-lockup logo-lockup--dark">
+      <a href="index.html" class="header-logo" aria-label="Sustune Care Home">
+        <div class="logo-lockup--light">
+          <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="220" height="56" class="logo-svg">
+        </div>
+        <div class="logo-lockup--dark">
           <img src="assets/logo/sustune_emblem_reversed_white.png" alt="" width="48" height="48" class="logo-emblem">
           <div class="logo-text">
             <span class="logo-brand">SUSTUNE CARE</span>
             <span class="logo-tagline">PROTECTED CARE &bull; SUSTAINED DIGNITY</span>
           </div>
         </div>
-        <div class="logo-lockup logo-lockup--light">
-          <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care Logo" width="216" height="48" class="logo-svg">
-        </div>
       </a>
 
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <ul class="desktop-nav-list">
+          <li><a href="index.html" class="desktop-nav-link">Home</a></li>
+          <li><a href="elder-care.html" class="desktop-nav-link">Elder Care</a></li>
+          <li><a href="property-management.html" class="desktop-nav-link">Property Management</a></li>
+          <li><a href="about.html" class="desktop-nav-link">About</a></li>
+          <li><a href="contact.html" class="desktop-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
       <div class="header-actions">
-        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch theme" title="Switch theme" aria-pressed="false">
-          <span id="theme-toggle-icon" class="theme-icon icon-sun" aria-hidden="true"></span>
-          <span id="theme-toggle-label" class="sr-only">Light Mode</span>
+        <!-- Theme Toggle -->
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Switch to dark theme" title="Switch to dark theme" aria-pressed="false">
+          <span id="theme-toggle-icon" class="theme-icon icon-moon" aria-hidden="true"></span>
+          <span id="theme-toggle-label" class="sr-only">Dark Mode</span>
         </button>
-        <a href="index.html" class="btn btn-secondary">
-          Return Home
+
+        <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary header-enquire-btn btn-enquire" target="_blank" rel="noopener noreferrer">
+          Enquire Now
         </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button type="button" id="hamburger-btn" class="hamburger-btn" aria-label="Open mobile navigation menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <span class="hamburger-line" aria-hidden="true"></span>
+          <span class="hamburger-line" aria-hidden="true"></span>
+          <span class="hamburger-line" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- 404 Main Content -->
-  <main id="main-content" class="hero-section">
-    <div class="container hero-content">
-      <div class="card hero-content-card accent-cerulean">
-        <span class="service-badge badge-cerulean">HTTP 404 &bull; Resource Not Found</span>
-        <h1 class="hero-title">Page Not Found</h1>
-        <p class="hero-subtext">
-          The requested page could not be located. It may have been moved, renamed, or is temporarily unavailable. Let us guide you back to our primary stewardship services.
-        </p>
+  <!-- Mobile Drawer -->
+  <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop" aria-hidden="true"></div>
+  <aside id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="mobile-drawer-header">
+      <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="180" height="46" class="logo-svg">
+    </div>
+    <nav class="mobile-drawer-nav" aria-label="Mobile Navigation">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="elder-care.html" class="mobile-nav-link">Elder Care</a>
+      <a href="property-management.html" class="mobile-nav-link">Property Management</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-primary mobile-enquire-btn btn-enquire" target="_blank" rel="noopener noreferrer">
+        Book a Consultation
+      </a>
+      <a href="https://wa.me/12067136114" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+        WhatsApp Us
+      </a>
+    </div>
+  </aside>
 
-        <div class="hero-actions">
-          <a href="index.html" class="btn btn-primary">
-            Return to Homepage
-          </a>
-          <a href="index.html#services" class="btn btn-secondary">
-            View NRI Services
-          </a>
-          <a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn btn-cerulean btn-enquire" target="_blank" rel="noopener noreferrer">
-            Contact Support
-          </a>
+  <!-- Breadcrumbs -->
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container breadcrumb-container">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-separator" aria-hidden="true">&gt;</li>
+        <li class="breadcrumb-item" aria-current="page">Error 404</li>
+      </ol>
+      <a href="index.html" class="back-home-link" aria-label="Back to Home Page">
+        <span aria-hidden="true">&larr;</span> Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="error-page-section" aria-labelledby="error-title">
+      <div class="container">
+        <div class="error-card">
+          <div class="error-code">404</div>
+          <h1 id="error-title" class="error-title">Page Not Found</h1>
+          <p class="error-desc">The page you requested could not be located. It may have been moved, renamed, or is temporarily unavailable.</p>
+          <div class="error-actions">
+            <a href="index.html" class="btn btn-primary">
+              Return to Homepage
+            </a>
+            <a href="contact.html" class="btn btn-secondary">
+              Contact Support
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
-    <div class="container footer-bottom">
-      <div>&copy; 2026 Sustune Care. All rights reserved.</div>
-      <div>Hyderabad &bull; Bengaluru, India</div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo/sustune_logo_horizontal_lockup.svg" alt="Sustune Care" width="180" height="46" class="footer-logo-inverted">
+          <p>Protected Care. Sustained Dignity. Caring for what matters most in India.</p>
+        </div>
+        <div>
+          <div class="footer-title">Pages</div>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="elder-care.html">Elder Care</a></li>
+            <li><a href="property-management.html">Property Management</a></li>
+            <li><a href="about.html">About Sustune</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="elder-care.html">Sparsh: Elder Care</a></li>
+            <li><a href="property-management.html">Aegis: Property Care</a></li>
+            <li><a href="about.html">Founders &amp; Team</a></li>
+            <li><a href="contact.html">Frequently Asked Questions</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Contact</div>
+          <ul class="footer-links">
+            <li><a href="tel:+918985634239">+91 89856 34239</a></li>
+            <li><a href="https://wa.me/12067136114" target="_blank" rel="noopener noreferrer">WhatsApp: +1 206 713 6114</a></li>
+            <li><a href="mailto:contact@sustunecare.com">contact@sustunecare.com</a></li>
+            <li><a href="https://forms.gle/o1y5bqXmaM8fCLvF8" class="btn-enquire" target="_blank" rel="noopener noreferrer">Consultation Form</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Sustune Care. All rights reserved.</div>
+        <div>Hyderabad &bull; Bengaluru, India</div>
+      </div>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp Action -->
+  <a href="https://wa.me/12067136114" class="floating-whatsapp" aria-label="Chat with Sustune Care on WhatsApp" target="_blank" rel="noopener noreferrer">
+    <svg class="whatsapp-svg-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.05 7.42C8.88 7.42 8.6 7.49 8.36 7.75C8.12 8.01 7.44 8.65 7.44 9.94C7.44 11.23 8.38 12.48 8.51 12.65C8.65 12.82 10.36 15.46 12.97 16.59C13.59 16.86 14.07 17.02 14.45 17.14C15.07 17.34 15.64 17.31 16.09 17.24C16.59 17.17 17.62 16.62 17.83 16.02C18.04 15.42 18.04 14.91 17.98 14.8C17.92 14.69 17.75 14.63 17.49 14.5C17.24 14.37 16 13.76 15.77 13.68C15.54 13.59 15.37 13.55 15.2 13.81C15.03 14.06 14.55 14.63 14.4 14.8C14.25 14.97 14.1 15 13.85 14.87C13.6 14.74 12.79 14.48 11.83 13.63C11.08 12.96 10.58 12.14 10.43 11.89C10.28 11.64 10.41 11.5 10.54 11.37C10.65 11.26 10.79 11.08 10.92 10.93C11.05 10.78 11.09 10.67 11.18 10.5C11.27 10.33 11.23 10.18 11.16 10.05C11.09 9.92 10.58 8.68 10.37 8.16C10.16 7.66 9.95 7.73 9.79 7.72C9.64 7.71 9.47 7.71 9.3 7.71L9.05 7.42Z" />
+    </svg>
+  </a>
 </body>
 </html>

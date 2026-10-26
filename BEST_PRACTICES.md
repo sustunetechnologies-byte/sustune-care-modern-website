@@ -38,6 +38,9 @@ This document details the engineering principles, accessibility guidelines, secu
 - [x] **`prefers-reduced-motion` Media Query**: Respects vestibular disorder preferences by pausing autoplaying videos and disabling layout transitions.
 - [x] **Video Captions Track (`<track kind="captions">`)**: Provides synchronized textual dialogue for hearing-impaired visitors.
 - [x] **Mobile Menu Body Scroll Lock & Esc Key Trap**: Keeps modal focus contained within the drawer and restores focus to the trigger upon exit.
+- [x] **Service Tile Modal Dialogs (`role="dialog"`, `aria-modal="true"`)**: Accessible detail panels with Escape key dismissal, backdrop click closing, and keyboard focus trap returning focus to the triggering tile.
+- [x] **Picture-Led Information Architecture**: Under 120 words of visible text per service page, minimizing cognitive load while keeping deep information accessible on click.
+- [x] **Uncropped 9:16 Portrait Video Embeds (`object-fit: contain`, `aspect-ratio: 9/16`)**: Respects native mobile capture ratios with visible playback controls and captions track.
 
 ---
 
