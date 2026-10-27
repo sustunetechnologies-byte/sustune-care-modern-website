@@ -27,6 +27,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
+  <script src="assets/js/theme-init.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/main.js" defer></script>
 </head>
@@ -154,9 +155,8 @@
     <section class="section-padding" aria-labelledby="services-title">
       <div class="container">
         <div class="section-header">
-          <span class="hero-eyebrow">SPARSH ELDER CARE</span>
           <h2 id="services-title" class="section-title">Sparsh Services</h2>
-          <p class="section-subline">Comprehensive on-ground personal and medical coordination for your parents.</p>
+          <p class="section-subline">On-ground care and medical coordination for your parents.</p>
         </div>
         <div class="service-tiles-grid">
           <!-- Photo Tile 1 -->
@@ -167,7 +167,7 @@
             </div>
             <div class="service-tile-overlay-content">
               <h3 class="service-tile-title">Emergency Medical Support</h3>
-              <p class="service-tile-desc">Immediate hospital coordination and rapid crisis liaison.</p>
+              <p class="service-tile-desc">Immediate hospital coordination and rapid medical crisis liaison.</p>
               <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-emergency" aria-label="Details for Emergency Medical Support">
                 <span>Details</span>
                 <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -183,7 +183,7 @@
             </div>
             <div class="service-tile-overlay-content">
               <h3 class="service-tile-title">Doctor Visit Accompaniment</h3>
-              <p class="service-tile-desc">Bedside and clinic accompaniment for medical appointments.</p>
+              <p class="service-tile-desc">Dedicated accompaniment for clinical visits and physician consultations.</p>
               <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-doctor" aria-label="Details for Doctor Visit Accompaniment">
                 <span>Details</span>
                 <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -199,7 +199,7 @@
             </div>
             <div class="service-tile-overlay-content">
               <h3 class="service-tile-title">Prescription &amp; Grocery Errands</h3>
-              <p class="service-tile-desc">Doorstep delivery of vital medicines and groceries.</p>
+              <p class="service-tile-desc">Prompt doorstep delivery of vital medicines and groceries.</p>
               <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-errands" aria-label="Details for Prescription and Grocery Errands">
                 <span>Details</span>
                 <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -215,7 +215,7 @@
             </div>
             <div class="service-tile-overlay-content">
               <h3 class="service-tile-title">Companionship &amp; Wellness Visits</h3>
-              <p class="service-tile-desc">Regular visits ensuring vitality, wellbeing, and dignity.</p>
+              <p class="service-tile-desc">Warm personal visits ensuring daily vitality and companionship.</p>
               <button type="button" class="btn-tile-details js-tile-trigger" aria-haspopup="dialog" aria-controls="modal-sparsh-wellness" aria-label="Details for Companionship and Wellness Visits">
                 <span>Details</span>
                 <svg class="tile-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -409,9 +409,11 @@
       <svg class="sticky-bar-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.05 7.42C8.88 7.42 8.6 7.49 8.36 7.75C8.12 8.01 7.44 8.65 7.44 9.94C7.44 11.23 8.38 12.48 8.51 12.65C8.65 12.82 10.36 15.46 12.97 16.59C13.59 16.86 14.07 17.02 14.45 17.14C15.07 17.34 15.64 17.31 16.09 17.24C16.59 17.17 17.62 16.62 17.83 16.02C18.04 15.42 18.04 14.91 17.98 14.8C17.92 14.69 17.75 14.63 17.49 14.5C17.24 14.37 16 13.76 15.77 13.68C15.54 13.59 15.37 13.55 15.2 13.81C15.03 14.06 14.55 14.63 14.4 14.8C14.25 14.97 14.1 15 13.85 14.87C13.6 14.74 12.79 14.48 11.83 13.63C11.08 12.96 10.58 12.14 10.43 11.89C10.28 11.64 10.41 11.5 10.54 11.37C10.65 11.26 10.79 11.08 10.92 10.93C11.05 10.78 11.09 10.67 11.18 10.5C11.27 10.33 11.23 10.18 11.16 10.05C11.09 9.92 10.58 8.68 10.37 8.16C10.16 7.66 9.95 7.73 9.79 7.72C9.64 7.71 9.47 7.71 9.3 7.71L9.05 7.42Z" />
     </svg>
   </a>
+  </div>
 
-  <!-- Accessible Video Modal Player (<dialog> overlay) -->
-  <dialog id="video-modal" class="video-modal" aria-labelledby="video-modal-title">
+  <!-- Accessible Video Modal Player (Fixed Overlay) -->
+  <div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden aria-labelledby="video-modal-title">
+    <div id="video-modal-backdrop" class="video-modal-backdrop" aria-hidden="true"></div>
     <div class="video-modal-container">
       <div class="video-modal-header">
         <h2 id="video-modal-title" class="video-modal-title">Sparsh Elder Care in Action</h2>
@@ -424,6 +426,6 @@
         </video>
       </div>
     </div>
-  </dialog>
+  </div>
 </body>
 </html>

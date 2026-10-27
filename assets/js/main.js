@@ -35,7 +35,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
 
     let savedTheme = null;
     try {
-      savedTheme = localStorage.getItem("sustune_theme");
+      savedTheme = localStorage.getItem("sc-theme");
     } catch (e) {}
 
     // Light mode is ALWAYS default, ignoring system dark mode
@@ -52,7 +52,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
         const nextTheme = currentTheme === "dark" ? "light" : "dark";
         applyTheme(nextTheme);
         try {
-          localStorage.setItem("sustune_theme", nextTheme);
+          localStorage.setItem("sc-theme", nextTheme);
         } catch (e) {}
       });
     }
@@ -335,7 +335,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
   }
 
   /* ==========================================================================
-     6. Accessible Video Modal Player (<dialog> with showModal)
+     6. Accessible Video Modal Player (Fixed Overlay with Sound & Focus Trap)
      ========================================================================== */
   function initVideoModal() {
     const videoModal = document.getElementById("video-modal");
@@ -345,6 +345,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
     const modalVideoSource = document.getElementById("modal-video-source");
     const modalTitle = document.getElementById("video-modal-title");
     const closeBtn = document.getElementById("video-modal-close-btn");
+    const backdrop = document.getElementById("video-modal-backdrop") || videoModal.querySelector(".video-modal-backdrop");
     const triggers = document.querySelectorAll(".js-video-modal-trigger");
 
     let lastActiveTrigger = null;
@@ -363,20 +364,14 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
           modalVideo.load();
         }
         modalVideo.currentTime = 0;
-        modalVideo.muted = false; // Modal videos play WITH sound
+        modalVideo.muted = false; // Modal videos play WITH sound after tap
         modalVideo.controls = true; // Native controls visible
       }
 
       body.classList.add("modal-locked");
       videoModal.classList.add("is-open");
-
-      if (typeof videoModal.showModal === "function") {
-        if (!videoModal.open) {
-          videoModal.showModal();
-        }
-      } else {
-        videoModal.setAttribute("open", "");
-      }
+      videoModal.setAttribute("aria-hidden", "false");
+      videoModal.removeAttribute("hidden");
 
       if (modalVideo) {
         const playPromise = modalVideo.play();
@@ -395,13 +390,8 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
       }
 
       videoModal.classList.remove("is-open");
+      videoModal.setAttribute("aria-hidden", "true");
       body.classList.remove("modal-locked");
-
-      if (typeof videoModal.close === "function" && videoModal.open) {
-        videoModal.close();
-      } else {
-        videoModal.removeAttribute("open");
-      }
 
       if (lastActiveTrigger) {
         lastActiveTrigger.focus();
@@ -428,28 +418,20 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
       closeBtn.addEventListener("click", closeModal);
     }
 
-    // Backdrop click to close on <dialog>
+    if (backdrop) {
+      backdrop.addEventListener("click", closeModal);
+    }
+
     videoModal.addEventListener("click", (e) => {
-      const container = videoModal.querySelector(".video-modal-container");
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-      const isInContainer = (
-        rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
-        rect.left <= e.clientX && e.clientX <= rect.left + rect.width
-      );
-      if (!isInContainer) {
+      if (e.target === videoModal) {
         closeModal();
       }
     });
 
-    // Native cancel event (Escape on dialog)
-    videoModal.addEventListener("cancel", (e) => {
-      e.preventDefault();
-      closeModal();
-    });
-
     // Escape and Tab focus trap
-    videoModal.addEventListener("keydown", (e) => {
+    document.addEventListener("keydown", (e) => {
+      if (!videoModal.classList.contains("is-open")) return;
+
       if (e.key === "Escape") {
         e.preventDefault();
         closeModal();

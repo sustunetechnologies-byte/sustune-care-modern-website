@@ -35,6 +35,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
+  <script src="assets/js/theme-init.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
   <script src="assets/js/main.js" defer></script>
 
@@ -331,8 +332,9 @@
     </a>
   </div>
 
-  <!-- Accessible Video Modal Player (<dialog> overlay) -->
-  <dialog id="video-modal" class="video-modal" aria-labelledby="video-modal-title">
+  <!-- Accessible Video Modal Player (Fixed Overlay) -->
+  <div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden aria-labelledby="video-modal-title">
+    <div id="video-modal-backdrop" class="video-modal-backdrop" aria-hidden="true"></div>
     <div class="video-modal-container">
       <div class="video-modal-header">
         <h2 id="video-modal-title" class="video-modal-title">Sustune Care Story</h2>
@@ -345,6 +347,6 @@
         </video>
       </div>
     </div>
-  </dialog>
+  </div>
 </body>
 </html>
