@@ -227,44 +227,70 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
   }
 
   /* ==========================================================================
-     5. Hero Video Autoplay & Toggle (No blur, reliable autoplay, play/pause btn)
+     5. Hero Video Autoplay, Sound & Motion Controls
      ========================================================================== */
   function initHeroVideo() {
     const video = document.getElementById("home-hero-video");
     const toggleBtn = document.getElementById("hero-video-toggle");
+    const soundBtn = document.getElementById("hero-sound-toggle");
     if (!video) return;
 
-    // Set muted and defaultMuted via JS
+    // Always starts muted on page load; sound state must NOT persist
     video.muted = true;
     video.defaultMuted = true;
 
-    // Do NOT pause because of prefers-reduced-motion by default per Ram Sir
+    // Respect prefers-reduced-motion: if reduced, show poster + play button
+    const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const pauseForReducedMotion = () => {
+      video.pause();
+      if (toggleBtn) {
+        toggleBtn.setAttribute("aria-label", "Play background video");
+        toggleBtn.setAttribute("title", "Play background video");
+        toggleBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>';
+      }
+    };
+
     const startPlay = () => {
+      if (reducedMotionQuery.matches) {
+        pauseForReducedMotion();
+        return;
+      }
       const promise = video.play();
       if (promise !== undefined) {
         promise.catch(() => {
-          // Retry on first user touch/click/scroll
           const retry = () => {
             video.muted = true;
             video.play().catch(() => {});
             window.removeEventListener("click", retry);
             window.removeEventListener("touchstart", retry);
-            window.removeEventListener("scroll", retry);
           };
           window.addEventListener("click", retry, { once: true, passive: true });
           window.addEventListener("touchstart", retry, { once: true, passive: true });
-          window.addEventListener("scroll", retry, { once: true, passive: true });
         });
       }
     };
 
     startPlay();
 
-    // Corner toggle button
+    reducedMotionQuery.addEventListener("change", (e) => {
+      if (e.matches) {
+        pauseForReducedMotion();
+      } else {
+        video.play().catch(() => {});
+        if (toggleBtn) {
+          toggleBtn.setAttribute("aria-label", "Pause background video");
+          toggleBtn.setAttribute("title", "Pause background video");
+          toggleBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+        }
+      }
+    });
+
+    // Play/Pause button
     if (toggleBtn) {
       toggleBtn.addEventListener("click", () => {
         if (video.paused) {
-          video.play();
+          video.play().catch(() => {});
           toggleBtn.setAttribute("aria-label", "Pause background video");
           toggleBtn.setAttribute("title", "Pause background video");
           toggleBtn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
@@ -276,10 +302,40 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
         }
       });
     }
+
+    // Sound toggle button (Rule 1 & Rule 2)
+    if (soundBtn) {
+      const speakerOffSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
+      const speakerOnSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+
+      // Hide sound button if hero video has no audio track
+      const verifyAudio = () => {
+        if (video.audioTracks && video.audioTracks.length === 0) {
+          soundBtn.hidden = true;
+          soundBtn.style.display = "none";
+        }
+      };
+      video.addEventListener("loadedmetadata", verifyAudio);
+
+      const updateSoundUI = () => {
+        const isMuted = video.muted;
+        soundBtn.setAttribute("aria-pressed", isMuted ? "false" : "true");
+        soundBtn.setAttribute("aria-label", isMuted ? "Turn sound on" : "Turn sound off");
+        soundBtn.setAttribute("title", isMuted ? "Turn sound on" : "Turn sound off");
+        soundBtn.innerHTML = isMuted ? speakerOffSvg : speakerOnSvg;
+      };
+
+      updateSoundUI();
+
+      soundBtn.addEventListener("click", () => {
+        video.muted = !video.muted;
+        updateSoundUI();
+      });
+    }
   }
 
   /* ==========================================================================
-     6. Accessible Video Modal Player
+     6. Accessible Video Modal Player (<dialog> with showModal)
      ========================================================================== */
   function initVideoModal() {
     const videoModal = document.getElementById("video-modal");
@@ -289,7 +345,6 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
     const modalVideoSource = document.getElementById("modal-video-source");
     const modalTitle = document.getElementById("video-modal-title");
     const closeBtn = document.getElementById("video-modal-close-btn");
-    const backdrop = document.getElementById("video-modal-backdrop");
     const triggers = document.querySelectorAll(".js-video-modal-trigger");
 
     let lastActiveTrigger = null;
@@ -307,15 +362,23 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
           modalVideoSource.setAttribute("src", videoSrc);
           modalVideo.load();
         }
+        modalVideo.currentTime = 0;
+        modalVideo.muted = false; // Modal videos play WITH sound
+        modalVideo.controls = true; // Native controls visible
       }
 
-      videoModal.removeAttribute("hidden");
-      videoModal.classList.add("is-open");
-      videoModal.setAttribute("aria-hidden", "false");
       body.classList.add("modal-locked");
+      videoModal.classList.add("is-open");
+
+      if (typeof videoModal.showModal === "function") {
+        if (!videoModal.open) {
+          videoModal.showModal();
+        }
+      } else {
+        videoModal.setAttribute("open", "");
+      }
 
       if (modalVideo) {
-        modalVideo.currentTime = 0;
         const playPromise = modalVideo.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => {});
@@ -328,12 +391,17 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
     function closeModal() {
       if (modalVideo) {
         modalVideo.pause();
+        modalVideo.currentTime = 0; // Reset on close
       }
 
       videoModal.classList.remove("is-open");
-      videoModal.setAttribute("aria-hidden", "true");
-      videoModal.setAttribute("hidden", "until-found");
       body.classList.remove("modal-locked");
+
+      if (typeof videoModal.close === "function" && videoModal.open) {
+        videoModal.close();
+      } else {
+        videoModal.removeAttribute("open");
+      }
 
       if (lastActiveTrigger) {
         lastActiveTrigger.focus();
@@ -346,19 +414,44 @@ const GOOGLE_FORM_URL = "https://forms.gle/o1y5bqXmaM8fCLvF8";
         e.preventDefault();
         openModal(trigger);
       });
+      if (trigger.getAttribute("role") === "button") {
+        trigger.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openModal(trigger);
+          }
+        });
+      }
     });
 
     if (closeBtn) {
       closeBtn.addEventListener("click", closeModal);
     }
-    if (backdrop) {
-      backdrop.addEventListener("click", closeModal);
-    }
 
-    document.addEventListener("keydown", (e) => {
-      if (!videoModal.classList.contains("is-open")) return;
+    // Backdrop click to close on <dialog>
+    videoModal.addEventListener("click", (e) => {
+      const container = videoModal.querySelector(".video-modal-container");
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      const isInContainer = (
+        rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX && e.clientX <= rect.left + rect.width
+      );
+      if (!isInContainer) {
+        closeModal();
+      }
+    });
 
+    // Native cancel event (Escape on dialog)
+    videoModal.addEventListener("cancel", (e) => {
+      e.preventDefault();
+      closeModal();
+    });
+
+    // Escape and Tab focus trap
+    videoModal.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
+        e.preventDefault();
         closeModal();
       } else if (e.key === "Tab") {
         const focusable = videoModal.querySelectorAll("button, [href], video, [tabindex]:not([tabindex='-1'])");

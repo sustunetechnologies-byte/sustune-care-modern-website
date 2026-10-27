@@ -203,9 +203,8 @@
     </svg>
   </a>
 
-  <!-- Accessible Video Modal Player -->
-  <div id="video-modal" class="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title" hidden>
-    <div id="video-modal-backdrop" class="video-modal-backdrop" aria-hidden="true"></div>
+  <!-- Accessible Video Modal Player (<dialog> overlay) -->
+  <dialog id="video-modal" class="video-modal" aria-labelledby="video-modal-title">
     <div class="video-modal-container">
       <div class="video-modal-header">
         <h2 id="video-modal-title" class="video-modal-title">Sustune Care Story</h2>
@@ -218,6 +217,6 @@
         </video>
       </div>
     </div>
-  </div>
+  </dialog>
 </body>
 </html>
